@@ -54,6 +54,7 @@ filetype plugin indent on     " required!
 """ END VUNDLE
 
 
+
 "" Stuff
 
 set ffs=unix
@@ -76,8 +77,12 @@ set mouse=a
 
 "" Syntax highlighting
 
+" Enable syntax
 syntax enable
-" Colors
+
+
+
+"" Colors
 colorscheme molokai
 "let g:molokai_original = 1
 "let g:rehash256 = 1
@@ -90,6 +95,7 @@ set t_Co=256
 
 set nobackup
 set swapfile
+
 " Don't pollute my project with swap files
 set directory=~/.vimswap
 
@@ -99,6 +105,7 @@ set directory=~/.vimswap
 
 " Don't store global and local values in sessions
 set ssop-=options
+
 " Don't store folds
 set ssop-=folds
 
@@ -108,22 +115,36 @@ set ssop-=folds
 
 " Highlight current line.
 set cursorline
+
 " Highlight current column
 set cursorcolumn
+
 " Lines to the cursor when scrolling with j/k
 set scrolloff=5
+
 " Underscores denote words
 set iskeyword-=_
+
 " Easier window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
 " Next/prev tab with ctrl+left/right
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+
 " New tab abbreviation
 ca tn tabnew
+
+" Quick exit to normal mode
+inoremap jj <ESC>
+inoremap jk <ESC>
+
+" Quick save and quick exit
+nnoremap <leader>s :update<CR>
+nnoremap <leader>q :q<CR>
 
 
 "" Splits
@@ -148,11 +169,6 @@ set showmatch
 " Clear search highlighting
 nnoremap <leader>/ :nohlsearch<CR>
 nnoremap <leader>7 :nohlsearch<CR>
-
-
-
-" Auto-remove trailing slashes
-"autocmd BufWritePre *.php :%s/\s\+$//e
 
 
 
@@ -183,14 +199,14 @@ autocmd InsertLeave * :set relativenumber
 
 
 
-" File name completion and tabbing
+"" File name completion and tabbing
 
 set wildmode=longest:full
 set wildmenu
 
 
 
-" Tabs
+"" Tabs
 
 " Dont expand tabs to spaces, and set tab size
 set noexpandtab
@@ -198,7 +214,7 @@ set tabstop=8
 
 
 
-" UI
+"" UI
 
 " Always show the status line
 set laststatus=2
@@ -207,29 +223,17 @@ set list lcs=tab:·\ ,trail:·,nbsp:%
 
 
 
-" Folding
+"" Folding
 
 " Don't fold by default
 set nofoldenable
 " Fold based on indent
 set foldmethod=indent
+
 " Deepest fold is 10 levels
 set foldnestmax=10
 set foldlevel=1
 set foldcolumn=2
-
-
-
-" Quick exit to normal mode
-inoremap jj <ESC>
-inoremap jk <ESC>
-
-" Quick save and quick exit
-nnoremap <leader>s :update<CR>
-nnoremap <leader>q :q<CR>
-
-" Toggle paste
-" nnoremap <leader>p :set paste!<CR>:set paste?<CR>
 
 
 
@@ -241,6 +245,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 
 "" NERDTree
+
 " Toggle
 map <F2> :NERDTreeToggle<CR>
 " Open NERDTree if vim starts without any files specified
@@ -269,11 +274,6 @@ let g:snipMate.no_default_aliases=1
 
 
 
-" Create/edit file in the current directory
-nmap :ed :edit %:p:h/
-
-
-
 "" Laravel
 
 "Ignore these when calling CtrlP
@@ -296,8 +296,18 @@ set pastetoggle=<F3>
 "set showmode
 
 
+
 "" vim-airline
 
 " Use powerline fonts to show powerline symbols
 " Needs a patched font
 let g:airline_powerline_fonts = 1
+
+
+"" Misc
+" Create/edit file in the current directory
+nmap :ed :edit %:p:h/
+
+" Auto-remove trailing slashes
+"autocmd BufWritePre *.php :%s/\s\+$//e
+
