@@ -23,6 +23,14 @@ for file in $files; do
 	ln -s $dir/$file ~/.$file
 done
 
+install_vundle () {
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	# Make swap dir for vim
+	mkdir ~/.vimswap
+	# Install Bundles
+	vim -c VundleInstall -c quitall
+}
+
 install_oh-my-zsh () {
 	cd $dir
 	if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
@@ -41,5 +49,7 @@ install_oh-my-zsh () {
 }
 
 install_oh-my-zsh
+
+install_vundle
 
 echo "Done."
