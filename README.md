@@ -1,6 +1,10 @@
 Dotfiles
 ------------
 
+* Creates symlinks to dotfiles in your home directory
+* Installs [Zsh](http://www.zsh.org) and [Oh-My-Zsh](https://github.com/robbyrussell/oh-my-zsh)
+* Installs [Vundle](https://github.com/gmarik/vundle) for Vim and runs `vim +PluginInstall +qall`
+
 Installation
 ------------
 
