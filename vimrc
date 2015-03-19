@@ -37,6 +37,8 @@ Bundle "honza/vim-snippets"
 Bundle "vim-scripts/loremipsum"
 
 "Bundle "spf13/vim-autoclose"
+Bundle 'stephpy/vim-php-cs-fixer'
+
 " ...
 call vundle#end()            " required
 filetype plugin indent on     " required!
@@ -326,11 +328,32 @@ set pastetoggle=<F3>
 let g:airline_powerline_fonts = 1
 
 
-"" Misc
 
-" Create/edit file in the current directory
-nmap :ed :edit %:p:h/
+"" Misc
 
 " Auto-remove trailing slashes
 "autocmd BufWritePre *.php :%s/\s\+$//e
 
+
+
+"" Vim-php-cs-fixer
+
+" If php-cs-fixer is in $PATH, you don't need to define line below
+" let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
+let g:php_cs_fixer_level = "psr2"                 " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
+
+" Enable the mapping by default (<leader>pcd for dir, <leader>pcf for file)
+" let g:php_cs_fixer_enable_default_mapping = 1
+
+" Custom mapping
+:command PCD :call PhpCsFixerFixDirectory()<CR>
+:command PCF :call PhpCsFixerFixFile()<CR>
+
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+" Refresh file after run, see https://github.com/stephpy/vim-php-cs-fixer/pull/12
