@@ -11,33 +11,31 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required!
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
 "
 " original repos on github
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tomasr/molokai'
-Bundle 'groenewege/vim-less'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tomasr/molokai'
+Plugin 'groenewege/vim-less'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-airline'
 " Problematic when used together with SnipMate?
-" Bundle 'ervandew/supertab'
-Bundle 'xsbeats/vim-blade'
+" Plugin 'ervandew/supertab'
+Plugin 'xsbeats/vim-blade'
 " Required by snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
+Plugin 'MarcWeber/vim-addon-mw-utils'
 " Required by snipmate
-Bundle "tomtom/tlib_vim"
+Plugin 'tomtom/tlib_vim'
 " SnipMate
-Bundle "garbas/vim-snipmate"
-Bundle "honza/vim-snippets"
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
-Bundle "vim-scripts/loremipsum"
-
-"Bundle "spf13/vim-autoclose"
-Bundle 'stephpy/vim-php-cs-fixer'
+" Plugin 'spf13/vim-autoclose'
+Plugin 'stephpy/vim-php-cs-fixer'
 
 " ...
 call vundle#end()            " required
@@ -356,4 +354,3 @@ let g:php_cs_fixer_php_path = "php"               " Path to PHP
 
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-" Refresh file after run, see https://github.com/stephpy/vim-php-cs-fixer/pull/12

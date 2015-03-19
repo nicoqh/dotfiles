@@ -24,11 +24,16 @@ for file in $files; do
 done
 
 install_vundle () {
-	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	# Make swap dir for vim
-	mkdir ~/.vimswap
-	# Install Bundles
-	vim -c VundleInstall -c quitall
+	if [ ! -d ~/.vimswap/ ]; then
+		mkdir ~/.vimswap
+	fi
+	# Install Vundle
+	if [ ! -d ~/.vim/bundle/Vundle.vim/.git ] && [ ! -f ~/.vim/bundle/Vundle.vim/.git ]; then
+		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+		# Install Plugins
+		vim +PluginInstall +qall
+	fi
 }
 
 install_oh-my-zsh () {
