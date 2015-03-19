@@ -62,14 +62,18 @@ let mapleader=","
 if has("syntax")
   "syntax on
 endif
+
 " Jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
 " Set utf8 as standard encoding
 set encoding=utf8
+
 " Undo levels
 set undolevels=1000
+
 " Enable mouse support
 set mouse=a
 
@@ -83,6 +87,7 @@ syntax enable
 
 
 "" Colors
+
 colorscheme molokai
 "let g:molokai_original = 1
 "let g:rehash256 = 1
@@ -147,7 +152,9 @@ nnoremap <leader>s :update<CR>
 nnoremap <leader>q :q<CR>
 
 
+
 "" Splits
+
 " Open split panes to right and bottom
 set splitbelow
 set splitright
@@ -155,17 +162,23 @@ set splitright
 
 
 "" Search
+
 " Highlight search results
 set hlsearch
 highlight Search cterm=underline
+
 " Search as you type
 set incsearch
+
 " Ignore case
 set ignorecase
+
 " Do not ignore case if we input a capital letter
 set smartcase
+
 " Show matching brackets on cursor hover
 set showmatch
+
 " Clear search highlighting
 nnoremap <leader>/ :nohlsearch<CR>
 nnoremap <leader>7 :nohlsearch<CR>
@@ -178,6 +191,7 @@ nnoremap <leader>7 :nohlsearch<CR>
 set number
 set relativenumber
 set numberwidth=6
+
 " Toggle absolute and relative line numbers
 function! NumberToggle()
 	if(&relativenumber == 1)
@@ -189,11 +203,14 @@ function! NumberToggle()
 	endif
 endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
+
 "Toggle line numbers with CTRL+n x 2
 ":nmap <C-N><C-N> :set invnumber<CR>
+
 "Absolute numbers in insert mode, relative numbers in normal mode
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
+
 " Color for line numbers
 " :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
@@ -218,6 +235,7 @@ set tabstop=8
 
 " Always show the status line
 set laststatus=2
+
 " Show non-text characters
 set list lcs=tab:·\ ,trail:·,nbsp:%
 
@@ -227,6 +245,7 @@ set list lcs=tab:·\ ,trail:·,nbsp:%
 
 " Don't fold by default
 set nofoldenable
+
 " Fold based on indent
 set foldmethod=indent
 
@@ -248,10 +267,13 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 " Toggle
 map <F2> :NERDTreeToggle<CR>
+
 " Open NERDTree if vim starts without any files specified
 autocmd vimenter * if !argc() | NERDTree | endif
+
 " Close vim if NERDTree is the only window left open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 "Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
@@ -260,6 +282,7 @@ let NERDTreeShowHidden=1
 "" NERDCommenter
 
 let NERDSpaceDelims = 1
+
 " Blade comments
 let g:NERDCustomDelimiters = {
 	\ 'blade': { 'left': '{{--', 'right': '--}}','leftAlt': '<!--', 'rightAlt': '-->' }
@@ -299,12 +322,12 @@ set pastetoggle=<F3>
 
 "" vim-airline
 
-" Use powerline fonts to show powerline symbols
-" Needs a patched font
+" Use powerline fonts to show powerline symbols. Needs a patched font
 let g:airline_powerline_fonts = 1
 
 
 "" Misc
+
 " Create/edit file in the current directory
 nmap :ed :edit %:p:h/
 
