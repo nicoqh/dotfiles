@@ -15,7 +15,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
 "
-" original repos on github
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tomasr/molokai'
