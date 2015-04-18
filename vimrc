@@ -227,6 +227,8 @@ set wildmenu
 " Dont expand tabs to spaces, and set tab size
 set noexpandtab
 set tabstop=8
+" Increase tab limit for the -p command line
+set tabpagemax=50
 
 
 
