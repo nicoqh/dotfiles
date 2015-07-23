@@ -152,11 +152,14 @@ nnoremap <leader>q :q<CR>
 
 
 
-"" Splits
+"" Splits and tabs
 
 " Open split panes to right and bottom
 set splitbelow
 set splitright
+
+" Increase tab limit for the -p command option
+set tabpagemax=50
 
 
 
@@ -222,13 +225,20 @@ set wildmenu
 
 
 
-"" Tabs
+"" Tabs for indenting
 
 " Dont expand tabs to spaces, and set tab size
-set noexpandtab
-set tabstop=8
-" Increase tab limit for the -p command line
-set tabpagemax=50
+"set noexpandtab
+"set tabstop=8
+
+
+
+"" Spaces for indenting
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 
 
 
