@@ -82,3 +82,7 @@ alias ll='ls -lh --group-directories-first'
 
 # pj plugin
 PROJECT_PATHS=(/var/www)
+
+# Keypad
+# Enter
+bindkey -s "^[OM" "^M"
