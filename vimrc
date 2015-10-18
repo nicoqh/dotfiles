@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
 "
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'
 Plugin 'groenewege/vim-less'
 Plugin 'kien/ctrlp.vim'
@@ -365,3 +366,20 @@ let g:php_cs_fixer_php_path = "php"               " Path to PHP
 
 let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
 let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+
+
+"" Syntastic
+let g:syntastic_php_checkers=['php']
+
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_style_warning_symbol = '≈'
+
+let g:syntastic_cursor_column = 0
