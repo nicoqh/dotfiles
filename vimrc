@@ -370,7 +370,8 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 
 "" Syntastic
-let g:syntastic_php_checkers=['php']
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args="--standard=psr2"
 
 " let g:syntastic_loc_list_height = 5
 " let g:syntastic_always_populate_loc_list = 1
