@@ -36,6 +36,7 @@ Plugin 'honza/vim-snippets'
 
 " Plugin 'spf13/vim-autoclose'
 Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'sjl/gundo.vim'
 
 " ...
 call vundle#end()            " required
@@ -393,3 +394,9 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_style_warning_symbol = '≈'
 
 let g:syntastic_cursor_column = 0
+
+
+
+" Gundo
+let g:gundo_width = 60
+let g:gundo_preview_height = 20
