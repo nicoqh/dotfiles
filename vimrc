@@ -77,6 +77,9 @@ set undolevels=1000
 " Enable mouse support
 set mouse=a
 
+" Enable modelines
+set modelines=1
+
 
 
 "" Syntax highlighting
@@ -151,6 +154,9 @@ inoremap jk <ESC>
 nnoremap <leader>s :update<CR>
 nnoremap <leader>q :q<CR>
 
+" highlight last inserted text
+nnoremap gV `[v`]
+
 
 
 "" Splits and tabs
@@ -197,14 +203,15 @@ set numberwidth=6
 
 " Toggle absolute and relative line numbers
 function! NumberToggle()
-	if(&relativenumber == 1)
-		set number
-		set norelativenumber
-	else
-		set number
-		set relativenumber
-	endif
+    if(&relativenumber == 1)
+        set number
+        set norelativenumber
+    else
+        set number
+        set relativenumber
+    endif
 endfunc
+
 nnoremap <C-n> :call NumberToggle()<cr>
 
 "Toggle line numbers with CTRL+n x 2
@@ -270,6 +277,8 @@ set foldcolumn=2
 
 "" CtrlP
 
+let g:ctrlp_match_window = 'bottom,order:ttb'
+
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 
@@ -297,7 +306,7 @@ let NERDSpaceDelims = 1
 
 " Blade comments
 let g:NERDCustomDelimiters = {
-	\ 'blade': { 'left': '{{--', 'right': '--}}','leftAlt': '<!--', 'rightAlt': '-->' }
+    \ 'blade': { 'left': '{{--', 'right': '--}}','leftAlt': '<!--', 'rightAlt': '-->' }
 \ }
 
 
@@ -312,7 +321,7 @@ let g:snipMate.no_default_aliases=1
 "" Laravel
 
 "Ignore these when calling CtrlP
-"set wildignore+=*/vendor/**
+set wildignore+=*/vendor/*,*node_modules/*
 
 
 
