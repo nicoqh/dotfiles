@@ -279,6 +279,7 @@ set foldcolumn=2
 "" CtrlP
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_custom_ignore = '\vnode_modules/|vendor/'
 
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
@@ -316,13 +317,6 @@ let g:NERDCustomDelimiters = {
 
 let g:snipMate = {}
 let g:snipMate.no_default_aliases=1
-
-
-
-"" Laravel
-
-"Ignore these when calling CtrlP
-set wildignore+=*/vendor/*,*node_modules/*
 
 
 
