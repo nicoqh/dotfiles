@@ -22,10 +22,11 @@ Plugin 'tomasr/molokai'
 Plugin 'groenewege/vim-less'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " Problematic when used together with SnipMate?
 " Plugin 'ervandew/supertab'
-Plugin 'xsbeats/vim-blade'
+Plugin 'jwalton512/vim-blade'
 " Required by snipmate
 Plugin 'MarcWeber/vim-addon-mw-utils'
 " Required by snipmate
