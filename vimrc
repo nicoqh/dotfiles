@@ -153,6 +153,7 @@ inoremap jj <ESC>
 inoremap jk <ESC>
 
 " Quick save and quick exit
+nmap <CR> :update<CR>
 nnoremap <leader>s :update<CR>
 nnoremap <leader>q :q<CR>
 
@@ -193,6 +194,7 @@ set showmatch
 " Clear search highlighting
 nnoremap <leader>/ :nohlsearch<CR>
 nnoremap <leader>7 :nohlsearch<CR>
+nnoremap <leader><space> :nohlsearch<CR>
 
 
 
