@@ -12,5 +12,4 @@ Installation
 git clone https://github.com/dnixx/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./makedotfiles.sh
-chsh -s /bin/zsh
 ```

@@ -1,3 +1,6 @@
+# Path to dotfiles
+export DOTFILES=$HOME/dotfiles
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -39,17 +42,17 @@ ZSH_THEME="agnoster"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$DOTFILES
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git laravel5 pj composer debian)
+plugins=(git laravel5 pj composer debian httpie)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/.npm-global/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -78,11 +81,3 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll='ls -lh --group-directories-first'
-
-# pj plugin
-PROJECT_PATHS=(/var/www)
-
-# Keypad
-# Enter
-bindkey -s "^[OM" "^M"

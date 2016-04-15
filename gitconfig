@@ -1,0 +1,7 @@
+# Use a separate file for personal configs
+[include]
+  path = ~/.gitconfig.local
+[core]
+    editor = vim
+[alias]
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
