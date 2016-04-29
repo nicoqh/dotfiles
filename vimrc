@@ -1,7 +1,5 @@
 "" Vundle
 
-
-
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -19,7 +17,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'
+Plugin 'gosukiwi/vim-atom-dark'
+Plugin 'StanAngeloff/php.vim'
 Plugin 'groenewege/vim-less'
+Plugin 'pangloss/vim-javascript'
+Plugin 'posva/vim-vue'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
@@ -34,8 +36,7 @@ Plugin 'tomtom/tlib_vim'
 " SnipMate
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-
-" Plugin 'spf13/vim-autoclose'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'sjl/gundo.vim'
 
@@ -93,11 +94,25 @@ syntax enable
 
 "" Colors
 
-colorscheme molokai
-"let g:molokai_original = 1
-"let g:rehash256 = 1
-"colorscheme xoria256
 set t_Co=256
+
+colorscheme atom-dark-256
+" colorscheme molokai
+
+" Color for line numbers
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+" Color for fold column
+highlight foldcolumn term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+" Color for vertical splits ("border")
+highlight VertSplit ctermfg=bg ctermbg=bg
+
+" Color for cursor column
+highlight CursorColumn term=reverse cterm=NONE ctermbg=236 ctermfg=none gui=NONE guibg=#293739 guifg=fg
+
+" Color for cursor line
+highlight CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#293739 guifg=fg
 
 
 
@@ -225,9 +240,6 @@ nnoremap <C-n> :call NumberToggle()<cr>
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
-" Color for line numbers
-" :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
 
 
 "" File name completion and tabbing
@@ -344,6 +356,10 @@ set pastetoggle=<F3>
 " Use powerline fonts to show powerline symbols. Needs a patched font
 let g:airline_powerline_fonts = 1
 
+" Set airline theme. Default behavior is to match the colorscheme.
+let g:airline_theme='molokai'
+
+
 
 
 "" Misc
@@ -394,6 +410,26 @@ let g:syntastic_cursor_column = 0
 
 
 
-" Gundo
+"" Gundo
 let g:gundo_width = 60
 let g:gundo_preview_height = 20
+
+
+
+"" AutoPairs
+
+" Flymode: if(a[3) results in: if(a[3])
+let g:AutoPairsFlyMode = 1
+
+" https://github.com/jiangmiao/auto-pairs/issues/88
+let g:AutoPairsShortcutFastWrap=''
+
+
+
+"" .vimrc editing
+
+" Automatically source .vimrc when saving
+augroup autosourcing
+        autocmd!
+        autocmd BufWritePost .vimrc source %
+augroup END
