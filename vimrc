@@ -38,6 +38,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'nvie/vim-flake8'
 Plugin 'sjl/gundo.vim'
 
 " ...
