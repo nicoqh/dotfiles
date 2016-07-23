@@ -19,6 +19,8 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tomasr/molokai'
 Plugin 'gosukiwi/vim-atom-dark'
 Plugin 'StanAngeloff/php.vim'
+Plugin 'othree/html5.vim'
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
 Plugin 'pangloss/vim-javascript'
 Plugin 'posva/vim-vue'
@@ -30,16 +32,20 @@ Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'ervandew/supertab'
 Plugin 'jwalton512/vim-blade'
 " Required by snipmate
-Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
 " Required by snipmate
-Plugin 'tomtom/tlib_vim'
+" Plugin 'tomtom/tlib_vim'
 " SnipMate
-Plugin 'garbas/vim-snipmate'
+" Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'Shougo/neocomplete'
+Plugin 'majutsushi/tagbar'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'nvie/vim-flake8'
 Plugin 'sjl/gundo.vim'
+Plugin 'fatih/vim-go'
 
 " ...
 call vundle#end()            " required
@@ -331,8 +337,15 @@ let g:NERDCustomDelimiters = {
 
 "" SnipMate
 
-let g:snipMate = {}
-let g:snipMate.no_default_aliases=1
+" let g:snipMate = {}
+" let g:snipMate.no_default_aliases=1
+
+
+
+"" UltiSnip
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 
@@ -394,6 +407,8 @@ let g:php_cs_fixer_verbose = 0                    " Return the output of command
 
 
 "" Syntastic
+
+" PHP
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args="--standard=psr2"
 
