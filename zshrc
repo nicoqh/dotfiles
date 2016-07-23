@@ -48,7 +48,7 @@ ZSH_CUSTOM=$DOTFILES
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git laravel5 pj composer debian httpie)
+plugins=(git laravel5 pj composer debian httpie golang)
 
 # User configuration
 
