@@ -38,11 +38,11 @@ setup_local_gitconfig() {
         # Create a local gitconfig (~/.gitconfig.local)
         echo "Creating a local ~/.gitconfig.local"
 
-        ask "What is your GitHub name?"
-        github_name=$REPLY
-        ask "What is your GitHub email?"
-        github_email=$REPLY
-        echo -e "[user]\n    name = $github_name\n    email = $github_email" > ~/.gitconfig.local
+        ask "What is your Git name?"
+        git_name=$REPLY
+        ask "What is your Git email?"
+        git_email=$REPLY
+        echo -e "[user]\n    name = $git_name\n    email = $git_email" > ~/.gitconfig.local
     fi
 }
 
