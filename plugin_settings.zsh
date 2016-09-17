@@ -1,2 +1,2 @@
 # pj plugin
-PROJECT_PATHS=(/var/www)
+PROJECT_PATHS=(/var/www ~/projects)
