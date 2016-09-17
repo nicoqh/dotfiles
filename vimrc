@@ -46,6 +46,8 @@ Plugin 'stephpy/vim-php-cs-fixer'
 Plugin 'nvie/vim-flake8'
 Plugin 'sjl/gundo.vim'
 Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 " ...
 call vundle#end()            " required
