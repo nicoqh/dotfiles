@@ -9,7 +9,7 @@ Installation
 ------------
 
 ``` bash
-git clone https://github.com/dnixx/dotfiles.git ~/dotfiles
+git clone https://github.com/nicoqh/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./makedotfiles.sh
 ```
