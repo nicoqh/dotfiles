@@ -92,6 +92,11 @@ set mouse=a
 " Enable modelines
 set modelines=1
 
+" Set mapping delay and key code delays
+" http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=400
+set ttimeoutlen=0
+
 
 
 "" Syntax highlighting
