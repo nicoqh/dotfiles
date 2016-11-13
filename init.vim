@@ -10,8 +10,20 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'gosukiwi/vim-atom-dark'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'jwalton512/vim-blade'
+
+" Colorschemes
+" Plug 'tomasr/molokai'
+Plug 'gosukiwi/vim-atom-dark'
 
 call plug#end()
 
@@ -20,6 +32,39 @@ call plug#end()
 "" Stuff
 
 let mapleader=","
+
+
+
+"" Misc mappings
+
+" Quick exit to normal mode
+inoremap jj <ESC>
+inoremap jk <ESC>
+
+" Quick save and quick exit
+nmap <CR> :update<CR>
+nnoremap <leader>s :update<CR>
+nnoremap <leader>q :q<CR>
+
+
+
+"" Splits and tabs
+
+" Open split panes to right and bottom
+set splitbelow
+set splitright
+
+" Increase tab limit for the -p command option
+set tabpagemax=50
+
+
+
+"" Indenting"
+
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 
 
 
@@ -76,6 +121,10 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+" Next/prev tab with ctrl+left/right
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
 
 
 "" Search
@@ -92,6 +141,9 @@ set smartcase
 " Show matching brackets on cursor hover
 set showmatch
 
+" Clear search highlighting
+nnoremap <leader><space> :nohlsearch<CR>
+
 
 
 "" NERDTree
@@ -100,7 +152,7 @@ set showmatch
 map <F2> :NERDTreeToggle<CR>
 
 " Open NERDTree if vim starts without any files specified
-autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd vimenter * if !argc() | NERDTree | endif
 
 "Show hidden files in NERDTree
 let NERDTreeShowHidden=1
@@ -117,6 +169,26 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 
 
+"" Syntastic"
+
+" PHP
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args="--standard=psr2"
+
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '∆'
+let g:syntastic_style_error_symbol = '✠'
+let g:syntastic_style_warning_symbol = '≈'
+
+let g:syntastic_cursor_column = 0
+
+
+
 "" vim-airline
 
 " Use powerline fonts to show powerline symbols. Needs a patched font
@@ -124,3 +196,13 @@ let g:airline_powerline_fonts = 1
 
 " Set airline theme. Default behavior is to match the colorscheme.
 let g:airline_theme='molokai'
+
+
+
+"" deocomplete
+
+" Enable deocomplete
+let g:deoplete#enable_at_startup = 1
+
+" Cycle completions with tab when the popup menu is visible
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
