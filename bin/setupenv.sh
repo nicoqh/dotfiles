@@ -3,9 +3,6 @@
 # Local gitconfig path
 GITCONFIG_LOCAL=~/.config/git/config.local
 
-# Alias for git operations
-DOTFILES_GIT_COMMAND="git --work-tree=$HOME/ --git-dir=$HOME/.local/share/dotfiles.git"
-
 
 #####################################
 
@@ -33,7 +30,7 @@ install_oh-my-zsh () {
             echo "Cloning robbyrussell/oh-my-zsh"
             git clone --depth=1 http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
         else
-            echo "Oh-My-Zsh already installed."
+            echo "Oh-My-Zsh is already installed."
         fi
 
         ask "Do you want to make Zsh your default shell?"
@@ -50,17 +47,6 @@ install_oh-my-zsh () {
 
 #####################################
 
-
-ask "This will override files with the same name as those in the repository. Continue?"
-
-if [[ ! "$REPLY" =~ ^[Yy]$  ]]; then
-    echo "Exit."
-    exit
-fi
-
-# Add the dotfiles to the home directory and override existing files
-$DOTFILES_GIT_COMMAND reset HEAD
-$DOTFILES_GIT_COMMAND checkout ~
 
 setup_local_gitconfig
 
