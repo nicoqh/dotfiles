@@ -1,69 +1,36 @@
 "" Vundle
 
-set nocompatible               " be iMproved
-filetype off                   " required!
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+set nocompatible " be iMproved
 
-" let Vundle manage Vundle, required!
-Plugin 'VundleVim/Vundle.vim'
+"" Plug
+call plug#begin('~/.vim/plugged/')
 
-" My Bundles here:
-"
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/syntastic'
-Plugin 'tomasr/molokai'
-Plugin 'gosukiwi/vim-atom-dark'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'othree/html5.vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-Plugin 'pangloss/vim-javascript'
-Plugin 'posva/vim-vue'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Problematic when used together with SnipMate?
-" Plugin 'ervandew/supertab'
-Plugin 'jwalton512/vim-blade'
-" Required by snipmate
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Required by snipmate
-" Plugin 'tomtom/tlib_vim'
-" SnipMate
-" Plugin 'garbas/vim-snipmate'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'Shougo/neocomplete'
-Plugin 'majutsushi/tagbar'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'stephpy/vim-php-cs-fixer'
-Plugin 'nvie/vim-flake8'
-Plugin 'sjl/gundo.vim'
-Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/neocomplete'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
+Plug 'jwalton512/vim-blade'
+Plug 'sjl/gundo.vim'
+Plug 'fatih/vim-go'
 
-" ...
-call vundle#end()            " required
-filetype plugin indent on     " required!
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-""" END VUNDLE
+" Colorschemes
+" Plugin 'tomasr/molokai'
+Plug 'gosukiwi/vim-atom-dark'
+
+call plug#end()
 
 
 
@@ -321,7 +288,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 map <F2> :NERDTreeToggle<CR>
 
 " Open NERDTree if vim starts without any files specified
-autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
 
 " Close vim if NERDTree is the only window left open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif

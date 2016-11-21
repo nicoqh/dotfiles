@@ -3,23 +3,29 @@
 " Neovim has sensible defaults: https://github.com/neovim/neovim/issues/2676
 " Vim differences: https://neovim.io/doc/user/vim_diff.html#vim-differences
 
+if empty(glob("~/.config/nvim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+endif
+
 "" Plug
 call plug#begin('~/.config/nvim/plugged/')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'pangloss/vim-javascript'
-Plug 'posva/vim-vue'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
+Plug 'sjl/gundo.vim'
+Plug 'fatih/vim-go'
 
 " Colorschemes
 " Plug 'tomasr/molokai'
@@ -153,6 +159,9 @@ map <F2> :NERDTreeToggle<CR>
 
 " Open NERDTree if vim starts without any files specified
 "autocmd vimenter * if !argc() | NERDTree | endif
+
+" Close vim if NERDTree is the only window left open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "Show hidden files in NERDTree
 let NERDTreeShowHidden=1
