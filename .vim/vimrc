@@ -1,12 +1,14 @@
-"" Vundle
+"" Plug
 
+" Download Plug if it doesn't exist
 if empty(glob("~/.vim/autoload/plug.vim"))
     execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 set nocompatible " be iMproved
 
-"" Plug
+"" Plugins
+
 call plug#begin('~/.vim/plugged/')
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -103,7 +105,7 @@ set nobackup
 set swapfile
 
 " Don't pollute my project with swap files
-set directory=~/.vimswap
+set directory=~/.local/share/vim/swap
 
 
 

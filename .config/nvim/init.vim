@@ -1,13 +1,15 @@
-" Neovim config
-"
 " Neovim has sensible defaults: https://github.com/neovim/neovim/issues/2676
 " Vim differences: https://neovim.io/doc/user/vim_diff.html#vim-differences
 
+"" Plug
+
+" Download Plug if it doesn't exist
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
-"" Plug
+"" Plugins
+
 call plug#begin('~/.config/nvim/plugged/')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -65,7 +67,7 @@ set tabpagemax=50
 
 
 
-"" Indenting"
+"" Indenting
 
 set expandtab
 set tabstop=4
@@ -117,6 +119,19 @@ set numberwidth=6
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
+" Show non-text characters
+set list lcs=tab:·\ ,trail:·,nbsp:%,extends:>
+
+
+
+"" Sessions
+
+" Don't store global and local values in sessions
+set ssop-=options
+
+" Don't store folds
+set ssop-=folds
+
 
 
 "" Navigation
@@ -152,6 +167,21 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 
 
+"" Folding
+
+" Don't fold by default
+set nofoldenable
+
+" Fold based on indent
+set foldmethod=indent
+
+" Deepest fold is 10 levels
+set foldnestmax=10
+set foldlevel=1
+set foldcolumn=2
+
+
+
 "" NERDTree
 
 " Toggle
@@ -178,7 +208,7 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 
 
-"" Syntastic"
+"" Syntastic
 
 " PHP
 let g:syntastic_php_checkers=['php', 'phpcs']
