@@ -19,10 +19,10 @@ dotfiles checkout ~
 
 ### Further setup
 
-Run `~/bin/setupenv.sh`. This will
+Run `~/bin/setupenv.sh`. This script will:
 
 * Create a local/private config file for Git
-* Install Zsh Oh-My-Zshell
+* Install Zsh and Oh My Zsh
 
 ## Adding and editing dotfiles
 
@@ -34,4 +34,4 @@ dotfiles add <file>
 dotfiles commit -m "<message>"
 ```
 
-If you decide to add a `.gitignore` which ignores everything, you must use the `-f` flag when staging files.
+If you decide to add a `.gitignore` that ignores everything, you must use the `-f` flag when staging files.
