@@ -21,6 +21,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
@@ -238,10 +240,16 @@ let g:airline_theme='molokai'
 
 
 
-"" deocomplete
+"" deoplete
 
-" Enable deocomplete
+" Enable deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 50
 
 " Cycle completions with tab when the popup menu is visible
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+
+
+"" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-j>"
