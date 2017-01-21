@@ -13,6 +13,7 @@ endif
 call plug#begin('~/.config/nvim/plugged/')
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'vim-airline/vim-airline'
@@ -26,6 +27,7 @@ Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
 Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
 Plug 'sjl/gundo.vim'
@@ -98,6 +100,9 @@ highlight CursorColumn term=reverse cterm=NONE ctermbg=236 ctermfg=none gui=NONE
 
 " Color for cursor line
 highlight CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#293739 guifg=fg
+
+" Color for syntax errors
+highlight Error term=NONE cterm=NONE ctermbg=88 ctermfg=231 gui=NONE guibg=#870000 guifg=#ffffff
 
 
 
