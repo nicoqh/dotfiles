@@ -26,8 +26,9 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
 Plug 'sjl/gundo.vim'
@@ -129,6 +130,9 @@ autocmd InsertLeave * :set relativenumber
 " Show non-text characters
 set list lcs=tab:·\ ,trail:·,nbsp:%,extends:>
 
+" Disable cursor-shape. No Terminator support.
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+
 
 
 "" Sessions
@@ -189,6 +193,12 @@ set foldcolumn=2
 
 
 
+"" JavaScript
+
+autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+
+
 "" NERDTree
 
 " Toggle
@@ -232,6 +242,9 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_style_warning_symbol = '≈'
 
 let g:syntastic_cursor_column = 0
+
+" JavaScript
+let g:syntastic_javascript_checkers = ['eslint']
 
 
 
