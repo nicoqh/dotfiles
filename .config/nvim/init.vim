@@ -46,6 +46,9 @@ call plug#end()
 
 let mapleader=","
 
+" Enable mouse support
+set mouse=a
+
 
 
 "" Misc mappings
