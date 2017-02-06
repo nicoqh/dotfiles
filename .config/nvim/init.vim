@@ -230,10 +230,6 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 
 "" Syntastic
 
-" PHP
-let g:syntastic_php_checkers=['php', 'phpcs']
-let g:syntastic_php_phpcs_args="--standard=psr2"
-
 " let g:syntastic_loc_list_height = 5
 " let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
@@ -245,6 +241,10 @@ let g:syntastic_style_error_symbol = '✠'
 let g:syntastic_style_warning_symbol = '≈'
 
 let g:syntastic_cursor_column = 0
+
+" PHP
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args="--standard=psr2"
 
 " JavaScript
 let g:syntastic_javascript_checkers = ['eslint']
@@ -274,3 +274,10 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 "" UltiSnips
 let g:UltiSnipsExpandTrigger="<c-j>"
+
+
+
+"" vim-jsx
+
+" Enable JSX syntax highlighting for .js files
+let g:jsx_ext_required = 0
