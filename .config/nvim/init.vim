@@ -121,6 +121,9 @@ set cursorline
 " Highlight current column
 set cursorcolumn
 
+" Color the 81st column
+set colorcolumn=81
+
 " Show (relative) lines numbers
 set number
 set relativenumber
@@ -131,7 +134,7 @@ autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
 " Show non-text characters
-set list lcs=tab:·\ ,trail:·,nbsp:%,extends:>
+set list lcs=tab:·\ ,trail:∑,nbsp:%,extends:>
 
 " Disable cursor-shape. No Terminator support.
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
@@ -179,6 +182,10 @@ set showmatch
 " Clear search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Center the serch result vertically
+nnoremap n nzz
+nnoremap N Nzz
+
 
 
 "" Folding
@@ -199,6 +206,16 @@ set foldcolumn=2
 "" JavaScript
 
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+
+
+"" Git commits
+
+" Force the cursor onto a new line after 72 characters
+autocmd FileType gitcommit set textwidth=72
+
+" Color the 73rd column
+autocmd FileType gitcommit set colorcolumn=73
 
 
 

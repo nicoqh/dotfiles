@@ -133,6 +133,9 @@ set cursorline
 " Highlight current column
 set cursorcolumn
 
+" Color the 81st column
+set colorcolumn=81
+
 " Lines to the cursor when scrolling with j/k
 set scrolloff=5
 
@@ -200,6 +203,10 @@ nnoremap <leader>/ :nohlsearch<CR>
 nnoremap <leader>7 :nohlsearch<CR>
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Center the serch result vertically
+nnoremap n nzz
+nnoremap N Nzz
+
 
 
 "" Line numbers
@@ -261,7 +268,7 @@ set softtabstop=4
 set laststatus=2
 
 " Show non-text characters
-set list lcs=tab:·\ ,trail:·,nbsp:%
+set list lcs=tab:·\ ,trail:∑,nbsp:%
 
 
 
@@ -283,6 +290,16 @@ set foldcolumn=2
 "" JavaScript
 
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+
+
+"" Git commits
+
+" Force the cursor onto a new line after 72 characters
+autocmd FileType gitcommit set textwidth=72
+
+" Color the 73rd column
+autocmd FileType gitcommit set colorcolumn=73
 
 
 
@@ -360,14 +377,6 @@ let g:airline_powerline_fonts = 1
 
 " Set airline theme. Default behavior is to match the colorscheme.
 let g:airline_theme='molokai'
-
-
-
-
-"" Misc
-
-" Auto-remove trailing slashes
-"autocmd BufWritePre *.php :%s/\s\+$//e
 
 
 
