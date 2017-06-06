@@ -137,7 +137,7 @@ autocmd InsertLeave * :set relativenumber
 set list lcs=tab:·\ ,trail:∑,nbsp:%,extends:>
 
 " Disable cursor-shape. No Terminator support.
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+set guicursor=
 
 
 
