@@ -298,4 +298,4 @@ let g:UltiSnipsExpandTrigger="<c-j>"
 "" vim-jsx
 
 " Enable JSX syntax highlighting for .js files
-let g:jsx_ext_required = 0
+"let g:jsx_ext_required = 0
