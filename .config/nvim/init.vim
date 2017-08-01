@@ -206,7 +206,7 @@ set foldcolumn=2
 
 "" JavaScript
 
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
