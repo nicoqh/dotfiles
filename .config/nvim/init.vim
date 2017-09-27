@@ -23,6 +23,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'terryma/vim-multiple-cursors'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
@@ -183,7 +184,7 @@ set showmatch
 " Clear search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
 
-" Center the serch result vertically
+" Center the search result vertically
 nnoremap n nzz
 nnoremap N Nzz
 
@@ -287,6 +288,19 @@ let g:deoplete#auto_complete_delay = 50
 
 " Cycle completions with tab when the popup menu is visible
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+
+
+"" vim-multiple-cursors
+
+" Prevent deoplete functions until multiple cursor editing is finished
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 
 
