@@ -15,6 +15,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -22,6 +23,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/neocomplete'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
@@ -84,7 +87,6 @@ syntax enable
 set t_Co=256
 
 colorscheme atom-dark-256
-" colorscheme molokai
 
 " Color for line numbers
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -290,7 +292,7 @@ set foldcolumn=2
 
 "" JavaScript
 
-autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
@@ -446,7 +448,7 @@ let g:AutoPairsShortcutFastWrap=''
 "" vim-jsx
 
 " Enable JSX syntax highlighting for .js files
-let g:jsx_ext_required = 0
+"let g:jsx_ext_required = 0
 
 
 
