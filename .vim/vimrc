@@ -320,6 +320,8 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 "" vim-startify
 
 let g:startify_session_dir = '~/vimsessions'
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header = [
             \ '     ________  ___       __   _______   ________  ________  _____ ______   _______        ',
             \ '    |\   __  \|\  \     |\  \|\  ___ \ |\   ____\|\   __  \|\   _ \  _   \|\  ___ \       ',
