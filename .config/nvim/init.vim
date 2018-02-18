@@ -15,8 +15,9 @@ call plug#begin('~/.config/nvim/plugged/')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+"Plug 'scrooloose/syntastic'
+"Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -275,6 +276,27 @@ let g:startify_custom_header = [
             \ '        \|__|\|__|\|____________|\|_______|\_________\|_______|\|__|     \|__|\|_______|  ',
             \ '                                          \|_________|                                    ',
             \ ]
+
+
+
+"" ALE
+
+" Don't run all linters
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '∆'
+let g:ale_sign_style_error = '✠'
+let g:ale_sign_style_warning = '≈'
+
+" Don't lint while typing
+let g:ale_lint_on_text_changed = 'normal' " always|normal|never|insert
+let g:ale_lint_delay = 300
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_save = 1
 
 
 
