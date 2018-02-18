@@ -24,6 +24,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'terryma/vim-multiple-cursors'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -331,6 +332,16 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
+
+
+
+"" AutoPairs
+
+" Flymode: if(a[3) results in: if(a[3])
+let g:AutoPairsFlyMode = 1
+
+" https://github.com/jiangmiao/auto-pairs/issues/88
+let g:AutoPairsShortcutFastWrap=''
 
 
 
