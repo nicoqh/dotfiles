@@ -83,6 +83,14 @@ set tabpagemax=50
 
 "" Indenting
 
+" Tabs for indenting
+
+" Dont expand tabs to spaces, and set tab size
+"set noexpandtab
+"set tabstop=8
+
+" Spaces for indenting
+
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -127,8 +135,8 @@ set cursorline
 " Highlight current column
 set cursorcolumn
 
-" Color the 81st column
-set colorcolumn=81
+" Color the 101st column
+set colorcolumn=101
 
 " Show (relative) lines numbers
 set number
@@ -251,6 +259,12 @@ let NERDTreeShowHidden=1
 
 
 
+"" NERDCommenter
+
+let NERDSpaceDelims = 1
+
+
+
 "" CtrlP
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -333,6 +347,34 @@ let g:airline_theme='molokai'
 
 
 
+"" UltiSnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+
+
+
+"" AutoPairs
+
+" Flymode: if(a[3) results in: if(a[3])
+let g:AutoPairsFlyMode = 1
+
+" https://github.com/jiangmiao/auto-pairs/issues/88
+let g:AutoPairsShortcutFastWrap=''
+
+
+
+"" Gundo
+let g:gundo_width = 60
+let g:gundo_preview_height = 20
+
+
+
+"" vim-jsx
+
+" Enable JSX syntax highlighting for .js files
+let g:jsx_ext_required = 0
+
+
+
 "" deoplete
 
 " Enable deoplete
@@ -354,25 +396,3 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
-
-
-
-"" AutoPairs
-
-" Flymode: if(a[3) results in: if(a[3])
-let g:AutoPairsFlyMode = 1
-
-" https://github.com/jiangmiao/auto-pairs/issues/88
-let g:AutoPairsShortcutFastWrap=''
-
-
-
-"" UltiSnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-
-
-
-"" vim-jsx
-
-" Enable JSX syntax highlighting for .js files
-"let g:jsx_ext_required = 0

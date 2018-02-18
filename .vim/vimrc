@@ -140,8 +140,8 @@ set cursorline
 " Highlight current column
 set cursorcolumn
 
-" Color the 81st column
-set colorcolumn=81
+" Color the 101st column
+set colorcolumn=101
 
 " Lines to the cursor when scrolling with j/k
 set scrolloff=5
@@ -252,15 +252,17 @@ set wildmenu
 
 
 
-"" Tabs for indenting
+"" Indenting
+
+set autoindent
+
+" Tabs for indenting
 
 " Dont expand tabs to spaces, and set tab size
 "set noexpandtab
 "set tabstop=8
 
-
-
-"" Spaces for indenting
+" Spaces for indenting
 
 set expandtab
 set tabstop=4
@@ -320,6 +322,28 @@ autocmd FileType markdown set colorcolumn=81
 
 
 
+"" NERDTree
+
+" Toggle
+map <F2> :NERDTreeToggle<CR>
+
+" Open NERDTree if vim starts without any files specified
+" autocmd vimenter * if !argc() | NERDTree | endif
+
+" Close vim if NERDTree is the only window left open
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
+
+
+"" NERDCommenter
+
+let NERDSpaceDelims = 1
+
+
+
 "" CtrlP
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
@@ -369,96 +393,6 @@ let g:ale_lint_on_save = 1
 
 
 
-"" NERDTree
-
-" Toggle
-map <F2> :NERDTreeToggle<CR>
-
-" Open NERDTree if vim starts without any files specified
-" autocmd vimenter * if !argc() | NERDTree | endif
-
-" Close vim if NERDTree is the only window left open
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-"Show hidden files in NERDTree
-let NERDTreeShowHidden=1
-
-
-
-"" NERDCommenter
-
-let NERDSpaceDelims = 1
-
-" Blade comments
-let g:NERDCustomDelimiters = {
-    \ 'blade': { 'left': '{{--', 'right': '--}}','leftAlt': '<!--', 'rightAlt': '-->' }
-\ }
-
-
-
-"" SnipMate
-
-" let g:snipMate = {}
-" let g:snipMate.no_default_aliases=1
-
-
-
-"" UltiSnip
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-
-
-" Indentation
-
-" Autoindent
-set autoindent
-
-
-
-"" Paste
-
-" Toggle paste mode
-nnoremap <F3> :set invpaste paste?<CR>
-set pastetoggle=<F3>
-"set showmode
-
-
-
-"" vim-airline
-
-" Use powerline fonts to show powerline symbols. Needs a patched font
-let g:airline_powerline_fonts = 1
-
-" Set airline theme. Default behavior is to match the colorscheme.
-let g:airline_theme='molokai'
-
-
-
-"" Vim-php-cs-fixer
-
-" If php-cs-fixer is in $PATH, you don't need to define line below
-" let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
-let g:php_cs_fixer_level = "psr2"                 " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
-
-" Enable the mapping by default (<leader>pcd for dir, <leader>pcf for file)
-" let g:php_cs_fixer_enable_default_mapping = 1
-
-" Custom mapping
-:command PCD :call PhpCsFixerFixDirectory()<CR>
-:command PCF :call PhpCsFixerFixFile()<CR>
-
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-
-
-
 "" Syntastic
 
 " let g:syntastic_loc_list_height = 5
@@ -482,9 +416,18 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 
 
-"" Gundo
-let g:gundo_width = 60
-let g:gundo_preview_height = 20
+"" vim-airline
+
+" Use powerline fonts to show powerline symbols. Needs a patched font
+let g:airline_powerline_fonts = 1
+
+" Set airline theme. Default behavior is to match the colorscheme.
+let g:airline_theme='molokai'
+
+
+
+"" UltiSnip
+let g:UltiSnipsExpandTrigger="<c-j>"
 
 
 
@@ -498,10 +441,48 @@ let g:AutoPairsShortcutFastWrap=''
 
 
 
+"" Gundo
+let g:gundo_width = 60
+let g:gundo_preview_height = 20
+
+
+
 "" vim-jsx
 
 " Enable JSX syntax highlighting for .js files
-"let g:jsx_ext_required = 0
+let g:jsx_ext_required = 0
+
+
+
+"" Paste
+
+" Toggle paste mode
+nnoremap <F3> :set invpaste paste?<CR>
+set pastetoggle=<F3>
+"set showmode
+
+
+
+"" Vim-php-cs-fixer
+
+" If php-cs-fixer is in $PATH, you don't need to define line below
+" let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
+let g:php_cs_fixer_level = "psr2"                 " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
+
+" Enable the mapping by default (<leader>pcd for dir, <leader>pcf for file)
+" let g:php_cs_fixer_enable_default_mapping = 1
+
+" Custom mapping
+:command PCD :call PhpCsFixerFixDirectory()<CR>
+:command PCF :call PhpCsFixerFixFile()<CR>
+
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
 
 
 
