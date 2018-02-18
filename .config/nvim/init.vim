@@ -29,6 +29,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
@@ -219,6 +220,16 @@ autocmd FileType gitcommit set textwidth=72
 
 " Color the 73rd column
 autocmd FileType gitcommit set colorcolumn=73
+
+
+
+"" Markdown
+
+" Force the cursor onto a new line after 80 characters
+autocmd FileType markdown set textwidth=80
+
+" Color the 81rd column
+autocmd FileType markdown set colorcolumn=81
 
 
 
