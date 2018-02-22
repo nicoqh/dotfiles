@@ -31,6 +31,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'digitaltoad/vim-pug'
+Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
@@ -50,10 +52,16 @@ call plug#end()
 
 "" Stuff
 
+set ffs=unix
 let mapleader=","
+set undolevels=1000
+set encoding=utf8
 
 " Enable mouse support
 set mouse=a
+
+" Enable modelines
+set modelines=1
 
 
 
@@ -68,6 +76,9 @@ nmap <CR> :update<CR>
 nnoremap <leader>s :update<CR>
 nnoremap <leader>q :q<CR>
 
+" highlight last inserted text
+nnoremap gV `[v`]
+
 
 
 "" Splits and tabs
@@ -78,6 +89,9 @@ set splitright
 
 " Increase tab limit for the -p command option
 set tabpagemax=50
+
+" New tab abbreviation
+ca tn tabnew
 
 
 
@@ -143,7 +157,7 @@ set number
 set relativenumber
 set numberwidth=6
 
-"Absolute numbers in insert mode, relative numbers in normal mode
+" Absolute numbers in insert mode, relative numbers in normal mode
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
 
@@ -152,6 +166,11 @@ set list lcs=tab:·\ ,trail:∑,nbsp:%,extends:>
 
 " Disable cursor-shape. No Terminator support.
 set guicursor=
+
+" File name completion and tabbing
+
+set wildmode=longest:full,full
+set wildmenu
 
 
 
@@ -167,6 +186,9 @@ set ssop-=folds
 
 "" Navigation
 
+" Underscores denote words
+set iskeyword-=_
+
 " Easier split navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -180,6 +202,9 @@ nnoremap <C-Right> :tabnext<CR>
 
 
 "" Search
+
+" Highlight search results
+set hlsearch
 
 " Search as you type
 set incsearch
@@ -214,6 +239,16 @@ set foldmethod=indent
 set foldnestmax=10
 set foldlevel=1
 set foldcolumn=2
+
+
+
+"" Swap and backup
+
+set nobackup
+set swapfile
+
+" Don't pollute my project with swap files
+" set directory=~/.local/share/nvim/swap// " default
 
 
 
@@ -295,10 +330,13 @@ let g:startify_custom_header = [
 
 "" ALE
 
-" Don't run all linters
+" Specify linters (don't run all). Will look in the ale_linters directory.
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'php': ['php', 'phpcs'],
 \}
+
+let g:ale_php_phpcs_standard = 'PSR2'
 
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '∆'
@@ -311,6 +349,11 @@ let g:ale_lint_delay = 300
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
+
+" Format echo messages
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 
 
@@ -375,17 +418,6 @@ let g:jsx_ext_required = 0
 
 
 
-"" deoplete
-
-" Enable deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 50
-
-" Cycle completions with tab when the popup menu is visible
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-
-
 "" vim-multiple-cursors
 
 " Prevent deoplete functions until multiple cursor editing is finished
@@ -396,3 +428,14 @@ endfunction
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
+
+
+
+"" deoplete
+
+" Enable deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 50
+
+" Cycle completions with tab when the popup menu is visible
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
