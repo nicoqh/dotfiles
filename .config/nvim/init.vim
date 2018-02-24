@@ -149,7 +149,7 @@ set cursorline
 " Highlight current column
 set cursorcolumn
 
-" Color the 101st column
+" Color the 101st column. See language-specific overrides below.
 set colorcolumn=101
 
 " Show (relative) lines numbers
@@ -254,7 +254,18 @@ set swapfile
 
 "" JavaScript
 
+" Indent two spaces
 autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+
+
+"" PHP
+
+" Color the 101st column
+autocmd FileType php set colorcolumn=101
+
+" Indent four spaces
+autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 
 
