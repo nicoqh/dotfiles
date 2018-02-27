@@ -186,9 +186,6 @@ set ssop-=folds
 
 "" Navigation
 
-" Underscores denote words
-set iskeyword-=_
-
 " Easier split navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
