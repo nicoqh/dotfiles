@@ -80,6 +80,12 @@ nnoremap <leader>q :q<CR>
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" Move lines up and down (normal and visual mode)
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 
 
 "" Splits and tabs
