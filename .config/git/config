@@ -2,7 +2,7 @@
 [include]
   path = ~/.config/git/config.local
 [core]
-    editor = vim
+    editor = nvim
 [alias]
     l = log --oneline --decorate --graph
     la = log --oneline --decorate --graph --all
