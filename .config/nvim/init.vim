@@ -307,6 +307,24 @@ map <F2> :NERDTreeToggle<CR>
 "Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
+" File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('js', 'yellow', 'none', '#f7df1e', '#151515')
+call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#f7df1e', '#151515')
+call NERDTreeHighlightFile('php', 'blue', 'none', '#8892be', '#151515')
+call NERDTreeHighlightFile('json', 'lightyellow', 'none', 'lightyellow', '#151515')
+call NERDTreeHighlightFile('md', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('yml', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('conf', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('config', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'lightblue', 'none', 'lightblue', '#151515')
+call NERDTreeHighlightFile('scss', 'lightblue', 'none', 'lightblue', '#151515')
+call NERDTreeHighlightFile('html', 'lightred', 'none', '#f06529', '#151515')
+
 
 
 "" NERDCommenter
