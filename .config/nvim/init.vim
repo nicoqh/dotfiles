@@ -316,6 +316,7 @@ endfunction
 call NERDTreeHighlightFile('js', 'yellow', 'none', '#f7df1e', '#151515')
 call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#f7df1e', '#151515')
 call NERDTreeHighlightFile('php', 'blue', 'none', '#8892be', '#151515')
+call NERDTreeHighlightFile('py', 'blue', 'none', '#4b8bbe', '#151515')
 call NERDTreeHighlightFile('json', 'lightyellow', 'none', 'lightyellow', '#151515')
 call NERDTreeHighlightFile('md', 'green', 'none', 'green', '#151515')
 call NERDTreeHighlightFile('yml', 'cyan', 'none', 'cyan', '#151515')
