@@ -41,7 +41,7 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
 Plug 'sjl/gundo.vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Colorschemes
 " Plug 'tomasr/molokai'
