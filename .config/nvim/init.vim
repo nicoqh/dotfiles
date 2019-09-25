@@ -12,7 +12,8 @@ endif
 
 call plug#begin('~/.config/nvim/plugged/')
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Misc plugins
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 "Plug 'scrooloose/syntastic'
@@ -21,31 +22,39 @@ Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'sjl/gundo.vim'
+Plug 'Lenovsky/nuake'
+
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTreee
+
+" Languages
 Plug 'StanAngeloff/php.vim'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'digitaltoad/vim-pug'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " styled-components, emotion
 Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
-Plug 'sjl/gundo.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Colorschemes
+Plug 'joshdick/onedark.vim'
 " Plug 'tomasr/molokai'
-Plug 'gosukiwi/vim-atom-dark'
+" Plug 'gosukiwi/vim-atom-dark'
+" Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
@@ -57,9 +66,15 @@ set ffs=unix
 let mapleader=","
 set undolevels=1000
 set encoding=utf8
+set hidden " It's OK to have an unwritten buffer that's not visible
 
 " Enable mouse support
 set mouse=a
+
+" Jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
 
 " Enable modelines
 set modelines=1
@@ -81,10 +96,14 @@ nnoremap <leader>q :q<CR>
 nnoremap gV `[v`]
 
 " Move lines up and down (normal and visual mode)
+" Is this any better? https://github.com/matze/vim-move
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Write as sudo
+cnoremap w!! w !sudo tee > /dev/null %
 
 
 
@@ -123,25 +142,26 @@ set softtabstop=4
 
 set t_Co=256
 
-colorscheme atom-dark-256
+colorscheme onedark
+set termguicolors
 
 " Color for line numbers
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " Color for fold column
-highlight foldcolumn term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" highlight foldcolumn term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " Color for vertical splits ("border")
-highlight VertSplit ctermfg=bg ctermbg=bg
+" highlight VertSplit ctermfg=bg ctermbg=bg
 
 " Color for cursor column
-highlight CursorColumn term=reverse cterm=NONE ctermbg=236 ctermfg=none gui=NONE guibg=#293739 guifg=fg
+" highlight CursorColumn term=reverse cterm=NONE ctermbg=236 ctermfg=none gui=NONE guibg=#293739 guifg=fg
 
 " Color for cursor line
-highlight CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#293739 guifg=fg
+" highlight CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#293739 guifg=fg
 
 " Color for syntax errors
-highlight Error term=NONE cterm=NONE ctermbg=88 ctermfg=231 gui=NONE guibg=#870000 guifg=#ffffff
+" highlight Error term=NONE cterm=NONE ctermbg=88 ctermfg=231 gui=NONE guibg=#870000 guifg=#ffffff
 
 
 
@@ -203,6 +223,10 @@ map <C-l> <C-w>l
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 
+" Next buffer with Tab
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprev<CR>
+
 
 
 "" Search
@@ -223,7 +247,7 @@ set smartcase
 set showmatch
 
 " Clear search highlighting
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <BS> :noh<CR>
 
 " Center the search result vertically
 nnoremap n nzz
@@ -248,11 +272,15 @@ set foldcolumn=2
 
 "" Swap and backup
 
+" backup
 set nobackup
-set swapfile
 
-" Don't pollute my project with swap files
-" set directory=~/.local/share/nvim/swap// " default
+" swap
+set swapfile
+set directory=~/.local/share/nvim/swap " this is the default location
+
+" undo directory
+set undodir=~/.local/share/nvim/undo " this is the default directory
 
 
 
@@ -263,6 +291,13 @@ autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabst
 
 
 
+" JSON
+
+" Indent two spaces
+autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+
+
 "" PHP
 
 " Color the 101st column
@@ -270,6 +305,19 @@ autocmd FileType php set colorcolumn=101
 
 " Indent four spaces
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+
+
+"" Python
+
+autocmd FileType python set
+    \ expandtab
+    \ shiftwidth=4
+    \ tabstop=4
+    \ softtabstop=4
+    \ autoindent
+    \ fileformat=unix
+    \ colorcolumn=80
 
 
 
@@ -299,7 +347,7 @@ autocmd FileType markdown set colorcolumn=81
 map <F2> :NERDTreeToggle<CR>
 
 " Open NERDTree if vim starts without any files specified
-"autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
 
 " Close vim if NERDTree is the only window left open
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -341,6 +389,15 @@ let g:ctrlp_custom_ignore = '\vnode_modules/|vendor/'
 
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
+
+if executable('ag')
+  " Use Ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " NB: ctrlp_custom_ignore is not used, but Ag respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 
 
@@ -473,3 +530,39 @@ let g:deoplete#auto_complete_delay = 50
 
 " Cycle completions with tab when the popup menu is visible
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+
+
+"" vim-markdown
+
+" disable concealing
+let g:vim_markdown_conceal = 0
+
+
+
+"" Nuake
+
+nnoremap <F4> :Nuake<CR>
+inoremap <F4> <C-\><C-n>:Nuake<CR>
+tnoremap <F4> <C-\><C-n>:Nuake<CR>
+
+
+
+" nerdtree-git-plugin
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "~",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
+
+
+" Unsorted/tmp
