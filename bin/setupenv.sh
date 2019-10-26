@@ -12,6 +12,16 @@ ask() {
     read
 }
 
+install_packages() {
+    echo -e "\nInstalling common packages ..."
+    sudo apt-get install \
+        htop \
+        curl \
+        neovim \
+        tree \
+        fonts-powerline
+}
+
 setup_local_gitconfig() {
     if [ ! -f $GITCONFIG_LOCAL ]; then
         echo "Creating a local $GITCONFIG_LOCAL"
@@ -47,6 +57,8 @@ install_oh-my-zsh () {
 
 #####################################
 
+
+install_packages
 
 setup_local_gitconfig
 

@@ -21,6 +21,7 @@ dotfiles checkout ~
 
 Run `~/bin/setupenv.sh`. This script will:
 
+* Install common packages with apt
 * Create a local/private config file for Git
 * Install Zsh and Oh My Zsh
 
@@ -29,6 +30,7 @@ Run `~/bin/setupenv.sh`. This script will:
 `dotfiles` is aliased to `git --work-tree=$HOME/ --git-dir=$HOME/.local/share/dotfiles.git` in `.zshrc`.
 
 To stage and commit dotfiles:
+
 ``` bash
 dotfiles add <file>
 dotfiles commit -m "<message>"
