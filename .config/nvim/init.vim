@@ -17,7 +17,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 "Plug 'scrooloose/syntastic'
-"Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -46,9 +46,11 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " styled-components, emotion
 Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'jparise/vim-graphql'
 
 " Colorschemes
 Plug 'joshdick/onedark.vim'
