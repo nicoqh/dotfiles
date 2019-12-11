@@ -89,6 +89,9 @@ set modelines=1
 inoremap jj <ESC>
 inoremap jk <ESC>
 
+" Scroll 2 lines with space
+nnoremap <Space> 2<C-e>
+
 " Quick save and quick exit
 nmap <CR> :update<CR>
 nnoremap <leader>s :update<CR>
