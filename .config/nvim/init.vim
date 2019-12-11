@@ -571,3 +571,12 @@ let g:NERDTreeIndicatorMapCustom = {
 
 
 " Unsorted/tmp
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+:tnoremap <Esc> <C-\><C-n>

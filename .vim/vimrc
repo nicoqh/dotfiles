@@ -584,3 +584,42 @@ let g:NERDTreeIndicatorMapCustom = {
 
 
 " Unsorted/tmp
+
+"" .vimrc editing
+
+" Automatically source .vimrc when saving
+augroup autosourcing
+        autocmd!
+        autocmd BufWritePost .vimrc source %
+augroup END
+
+
+
+"" Vim-php-cs-fixer
+
+" If php-cs-fixer is in $PATH, you don't need to define line below
+" let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
+let g:php_cs_fixer_level = "psr2"                 " which level ?
+let g:php_cs_fixer_config = "default"             " configuration
+let g:php_cs_fixer_php_path = "php"               " Path to PHP
+
+" If you want to define specific fixers:
+"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
+
+" Enable the mapping by default (<leader>pcd for dir, <leader>pcf for file)
+" let g:php_cs_fixer_enable_default_mapping = 1
+
+" Custom mapping
+:command PCD :call PhpCsFixerFixDirectory()<CR>
+:command PCF :call PhpCsFixerFixFile()<CR>
+
+let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
+let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
+
+
+
+
+" Set mapping delay and key code delays
+" http://www.johnhawthorn.com/2012/09/vi-escape-delays/
+set timeoutlen=400
+set ttimeoutlen=0
