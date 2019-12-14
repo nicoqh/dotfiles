@@ -7,3 +7,4 @@
     l = log --oneline --decorate --graph
     la = log --oneline --decorate --graph --all
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    nah = !git reset --hard && git clean -df
