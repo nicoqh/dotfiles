@@ -380,18 +380,18 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('js', 'yellow', 'none', '#f7df1e', '#151515')
-call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#f7df1e', '#151515')
-call NERDTreeHighlightFile('php', 'blue', 'none', '#8892be', '#151515')
-call NERDTreeHighlightFile('py', 'blue', 'none', '#4b8bbe', '#151515')
-call NERDTreeHighlightFile('json', 'lightyellow', 'none', 'lightyellow', '#151515')
-call NERDTreeHighlightFile('md', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('yml', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('conf', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('config', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'lightblue', 'none', 'lightblue', '#151515')
-call NERDTreeHighlightFile('scss', 'lightblue', 'none', 'lightblue', '#151515')
-call NERDTreeHighlightFile('html', 'lightred', 'none', '#f06529', '#151515')
+call NERDTreeHighlightFile('js', 'yellow', 'none', '#f7df1e', 'transparent')
+call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#f7df1e', 'transparent')
+call NERDTreeHighlightFile('php', 'blue', 'none', '#8892be', 'transparent')
+call NERDTreeHighlightFile('py', 'blue', 'none', '#4b8bbe', 'transparent')
+call NERDTreeHighlightFile('json', 'lightyellow', 'none', 'lightyellow', 'transparent')
+call NERDTreeHighlightFile('md', 'green', 'none', 'green', 'transparent')
+call NERDTreeHighlightFile('yml', 'cyan', 'none', 'cyan', 'transparent')
+call NERDTreeHighlightFile('conf', 'cyan', 'none', 'cyan', 'transparent')
+call NERDTreeHighlightFile('config', 'cyan', 'none', 'cyan', 'transparent')
+call NERDTreeHighlightFile('css', 'lightblue', 'none', 'lightblue', 'transparent')
+call NERDTreeHighlightFile('scss', 'lightblue', 'none', 'lightblue', 'transparent')
+call NERDTreeHighlightFile('html', 'lightred', 'none', '#f06529', 'transparent')
 
 
 
