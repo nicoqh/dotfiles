@@ -16,9 +16,9 @@ call plug#begin('~/.config/nvim/plugged/')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
-Plug 'w0rp/ale'
+"Plug 'scrooloose/syntastic' " Use ALE instead
+"Plug 'mtscout6/syntastic-local-eslint.vim' " Use ALE instead
+Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -42,10 +42,11 @@ Plug 'StanAngeloff/php.vim'
 Plug 'othree/html5.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'plasticboy/vim-markdown'
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " included with chemzqm/vim-jsx-improve
+" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " Has indenting issues
+Plug 'chemzqm/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] } " Includes pangloss/vim-javascript
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " styled-components, emotion
 Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 Plug 'jwalton512/vim-blade'
@@ -282,10 +283,10 @@ set nobackup
 
 " swap
 set swapfile
-set directory=~/.local/share/nvim/swap " this is the default location
+set directory=~/.local/share/nvim/swap
 
 " undo directory
-set undodir=~/.local/share/nvim/undo " this is the default directory
+set undodir=~/.local/share/nvim/undo
 
 
 
@@ -426,7 +427,13 @@ let g:startify_custom_header = [
 
 "" ALE
 
-" Specify linters (don't run all). Will look in the ale_linters directory.
+" Only run linters named in ale_linters settings.
+" let g:ale_linters_explicit = 1
+
+" Specify linters (i.e. don't run all). Will look in the ale_linters directory.
+" php:
+"  - php: the php executable
+"  - phpcs: https://github.com/squizlabs/PHP_CodeSniffer
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'php': ['php', 'phpcs'],
@@ -468,7 +475,7 @@ let g:syntastic_style_warning_symbol = '≈'
 let g:syntastic_cursor_column = 0
 
 " PHP
-let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_checkers=['php', 'phpcs'] " The php executable and https://github.com/squizlabs/PHP_CodeSniffer
 let g:syntastic_php_phpcs_args="--standard=psr2"
 
 " JavaScript
@@ -504,13 +511,6 @@ let g:AutoPairsShortcutFastWrap=''
 "" Gundo
 let g:gundo_width = 60
 let g:gundo_preview_height = 20
-
-
-
-"" vim-jsx
-
-" Enable JSX syntax highlighting for .js files
-let g:jsx_ext_required = 0
 
 
 
