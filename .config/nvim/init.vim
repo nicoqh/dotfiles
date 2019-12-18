@@ -13,7 +13,7 @@ endif
 call plug#begin('~/.config/nvim/plugged/')
 
 " Misc plugins
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree' " { 'on': 'NERDTreeToggle' } Only if you don't start NERDTree on launch
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 "Plug 'scrooloose/syntastic' " Use ALE instead
@@ -352,11 +352,12 @@ autocmd FileType markdown set colorcolumn=81
 " Toggle
 map <F2> :NERDTreeToggle<CR>
 
-" Open NERDTree if vim starts without any files specified
-" autocmd vimenter * if !argc() | NERDTree | endif
+" Open NERDTree on launch, unless we're opening a file or a session
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
 
 " Close vim if NERDTree is the only window left open
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Show hidden files in NERDTree
 let NERDTreeShowHidden=1
