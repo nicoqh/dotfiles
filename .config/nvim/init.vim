@@ -31,6 +31,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'sjl/gundo.vim'
 Plug 'Lenovsky/nuake'
+Plug 'machakann/vim-sandwich'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -54,10 +55,13 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jparise/vim-graphql'
 
 " Colorschemes
-Plug 'joshdick/onedark.vim'
-" Plug 'tomasr/molokai'
-" Plug 'gosukiwi/vim-atom-dark'
-" Plug 'mhartington/oceanic-next'
+" * iceberg
+" * nord
+" * one
+" * pinkymoon
+" * sierra
+" * two-firewatch
+Plug 'rafi/awesome-vim-colorschemes'
 
 call plug#end()
 
@@ -97,6 +101,7 @@ nnoremap <Space> 2<C-e>
 nmap <CR> :update<CR>
 nnoremap <leader>s :update<CR>
 nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :qall<CR>
 
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -122,9 +127,6 @@ set splitright
 " Increase tab limit for the -p command option
 set tabpagemax=50
 
-" New tab abbreviation
-ca tn tabnew
-
 
 
 "" Indenting
@@ -148,7 +150,7 @@ set softtabstop=4
 
 set t_Co=256
 
-colorscheme onedark
+colorscheme nord
 set termguicolors
 
 " Color for line numbers
@@ -359,8 +361,11 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == ""
 " Close vim if NERDTree is the only window left open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"Show hidden files in NERDTree
+" Show hidden files in NERDTree
 let NERDTreeShowHidden=1
+
+" Automatically delete the buffer of the file you just deleted with NerdTree
+let NERDTreeAutoDeleteBuffer = 1
 
 " File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -490,7 +495,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:airline_powerline_fonts = 1
 
 " Set airline theme. Default behavior is to match the colorscheme.
-let g:airline_theme='molokai'
+let g:airline_theme='nord'
 
 
 
