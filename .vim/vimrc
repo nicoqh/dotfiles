@@ -15,8 +15,6 @@ call plug#begin('~/.vim/plugged/')
 Plug 'scrooloose/nerdtree' " { 'on': 'NERDTreeToggle' } Only if you don't start NERDTree on launch
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/syntastic' " Use ALE instead
-"Plug 'mtscout6/syntastic-local-eslint.vim' " Use ALE instead
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -39,21 +37,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTreee
 
-" Languages
-Plug 'StanAngeloff/php.vim'
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'plasticboy/vim-markdown'
-" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " included with chemzqm/vim-jsx-improve
-" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " Has indenting issues
-Plug 'chemzqm/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] } " Includes pangloss/vim-javascript
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " styled-components, emotion
-Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
-Plug 'leafgarland/typescript-vim'
-Plug 'posva/vim-vue'
-Plug 'jwalton512/vim-blade'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'jparise/vim-graphql'
+" Syntax
+Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
 " * iceberg
@@ -124,6 +109,30 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 " Write as sudo
 cnoremap w!! w !sudo tee > /dev/null %
 
+" Buffers
+nnoremap <leader>bd :bdelete<cr> " Delete buffer
+nnoremap <leader>bc :bdelete<cr> " Delete buffer
+nnoremap <leader>bn :enew<cr> " New buffer (in current window)
+
+" Tabs
+nnoremap <leader>tn :tabnew<cr> " New tab
+nnoremap <leader>td :tabclose<cr> " Delete (close) tab
+nnoremap <leader>tc :tabclose<cr> " Delete (close) tab
+
+" Easier split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Next/prev tab with ctrl+left/right
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
+" Next buffer with Tab
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprev<CR>
+
 
 
 "" Splits and tabs
@@ -160,7 +169,7 @@ set softtabstop=4
 
 set t_Co=256
 
-colorscheme iceberg
+colorscheme nord
 set termguicolors
 
 " Color for line numbers
@@ -229,24 +238,6 @@ set ssop-=options
 
 " Don't store folds
 set ssop-=folds
-
-
-
-"" Navigation
-
-" Easier split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" Next/prev tab with ctrl+left/right
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-
-" Next buffer with Tab
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprev<CR>
 
 
 
@@ -456,6 +447,7 @@ let g:startify_custom_header = [
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'php': ['php', 'phpcs'],
+\   'python': ['flake8', 'pylint'],
 \}
 
 let g:ale_php_phpcs_standard = 'PSR2'
@@ -598,32 +590,6 @@ augroup autosourcing
         autocmd!
         autocmd BufWritePost .vimrc source %
 augroup END
-
-
-
-"" Vim-php-cs-fixer
-
-" If php-cs-fixer is in $PATH, you don't need to define line below
-" let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
-let g:php_cs_fixer_level = "psr2"                 " which level ?
-let g:php_cs_fixer_config = "default"             " configuration
-let g:php_cs_fixer_php_path = "php"               " Path to PHP
-
-" If you want to define specific fixers:
-"let g:php_cs_fixer_fixers_list = "linefeed,short_tag,indentation"
-
-" Enable the mapping by default (<leader>pcd for dir, <leader>pcf for file)
-" let g:php_cs_fixer_enable_default_mapping = 1
-
-" Custom mapping
-:command PCD :call PhpCsFixerFixDirectory()<CR>
-:command PCF :call PhpCsFixerFixFile()<CR>
-
-let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information.
-
-
-
 
 " Set mapping delay and key code delays
 " http://www.johnhawthorn.com/2012/09/vi-escape-delays/

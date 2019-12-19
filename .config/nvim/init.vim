@@ -16,8 +16,6 @@ call plug#begin('~/.config/nvim/plugged/')
 Plug 'scrooloose/nerdtree' " { 'on': 'NERDTreeToggle' } Only if you don't start NERDTree on launch
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'scrooloose/syntastic' " Use ALE instead
-"Plug 'mtscout6/syntastic-local-eslint.vim' " Use ALE instead
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -38,21 +36,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTreee
 
-" Languages
-Plug 'StanAngeloff/php.vim'
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'plasticboy/vim-markdown'
-" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] } " included with chemzqm/vim-jsx-improve
-" Plug 'mxw/vim-jsx', { 'for': ['javascript', 'javascript.jsx'] } " Has indenting issues
-Plug 'chemzqm/vim-jsx-improve', { 'for': ['javascript', 'javascript.jsx'] } " Includes pangloss/vim-javascript
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' } " styled-components, emotion
-Plug 'elzr/vim-json', { 'for': ['json', 'jsonp'] }
-Plug 'leafgarland/typescript-vim'
-Plug 'posva/vim-vue'
-Plug 'jwalton512/vim-blade'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'jparise/vim-graphql'
+" Syntax
+Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
 " * iceberg
@@ -115,6 +100,30 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Write as sudo
 cnoremap w!! w !sudo tee > /dev/null %
+
+" Buffers
+nnoremap <leader>bd :bdelete<cr> " Delete buffer
+nnoremap <leader>bc :bdelete<cr> " Delete buffer
+nnoremap <leader>bn :enew<cr> " New buffer (in current window)
+
+" Tabs
+nnoremap <leader>tn :tabnew<cr> " New tab
+nnoremap <leader>td :tabclose<cr> " Delete (close) tab
+nnoremap <leader>tc :tabclose<cr> " Delete (close) tab
+
+" Easier split navigation
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" Next/prev tab with ctrl+left/right
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
+" Next buffer with Tab
+:nnoremap <Tab> :bnext<CR>
+:nnoremap <S-Tab> :bprev<CR>
 
 
 
@@ -219,24 +228,6 @@ set ssop-=folds
 
 
 
-"" Navigation
-
-" Easier split navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
-" Next/prev tab with ctrl+left/right
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-
-" Next buffer with Tab
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprev<CR>
-
-
-
 "" Search
 
 " Highlight search results
@@ -326,6 +317,13 @@ autocmd FileType python set
     \ autoindent
     \ fileformat=unix
     \ colorcolumn=80
+
+" Find and set the system Python for Neovim (don't use the virtual environment's bin)
+if exists("$VIRTUAL_ENV")
+    let g:python3_host_prog=substitute(system("which -a python3 | head -n2 | tail -n1"), "\n", '', 'g')
+else
+    let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
+endif
 
 
 
@@ -443,6 +441,7 @@ let g:startify_custom_header = [
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'php': ['php', 'phpcs'],
+\   'python': ['flake8', 'pylint'],
 \}
 
 let g:ale_php_phpcs_standard = 'PSR2'
