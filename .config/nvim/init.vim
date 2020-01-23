@@ -37,7 +37,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTreee
 
 " Syntax
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot' " Disable packs: let g:polyglot_disabled = [...], before polyglot
 
 " Colorschemes
 " * iceberg
@@ -304,6 +304,13 @@ autocmd FileType php set colorcolumn=101
 
 " Indent four spaces
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+
+
+"" CSS
+
+" Indent two spaces
+autocmd FileType css,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
