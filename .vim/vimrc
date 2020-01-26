@@ -38,7 +38,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTreee
 
 " Syntax
-Plug 'sheerun/vim-polyglot' " Disable packs: let g:polyglot_disabled = [...], before polyglot
+Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
 " * iceberg
