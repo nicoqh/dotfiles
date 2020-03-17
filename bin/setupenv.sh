@@ -14,7 +14,9 @@ ask() {
 
 install_packages() {
     echo -e "\nInstalling common packages ..."
-    sudo apt-get install \
+    sudo apt-get update && sudo apt-get install \
+        terminator \
+        kitty \
         htop \
         curl \
         neovim \
