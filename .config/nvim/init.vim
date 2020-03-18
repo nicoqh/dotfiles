@@ -47,6 +47,7 @@ Plug 'sheerun/vim-polyglot'
 " * sierra
 " * two-firewatch
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'sainnhe/edge'
 
 call plug#end()
 
@@ -139,14 +140,6 @@ set tabpagemax=50
 
 
 "" Indenting
-
-" Tabs for indenting
-
-" Dont expand tabs to spaces, and set tab size
-"set noexpandtab
-"set tabstop=8
-
-" Spaces for indenting
 
 set expandtab
 set tabstop=4
@@ -285,6 +278,9 @@ set undodir=~/.local/share/nvim/undo
 
 "" JavaScript
 
+" Color the 81st column
+autocmd FileType javascript,javascript.jsx set colorcolumn=81
+
 " Indent two spaces
 autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
@@ -299,8 +295,8 @@ autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 "" PHP
 
-" Color the 101st column
-autocmd FileType php set colorcolumn=101
+" Color the 81st column
+autocmd FileType php set colorcolumn=81
 
 " Indent four spaces
 autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
@@ -323,7 +319,7 @@ autocmd FileType python set
     \ softtabstop=4
     \ autoindent
     \ fileformat=unix
-    \ colorcolumn=80
+    \ colorcolumn=81
 
 " Find and set the system Python for Neovim (don't use the virtual environment's bin)
 if exists("$VIRTUAL_ENV")
@@ -355,6 +351,10 @@ autocmd FileType markdown set colorcolumn=81
 
 
 "" NERDTree
+
+" Custom icons for expandable/expanded directories
+let g:NERDTreeDirArrowExpandable = '⬏'
+let g:NERDTreeDirArrowCollapsible = '⬎'
 
 " Toggle
 map <F2> :NERDTreeToggle<CR>
