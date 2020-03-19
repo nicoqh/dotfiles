@@ -161,8 +161,8 @@ set softtabstop=4
 
 set t_Co=256
 
-colorscheme nord
 set termguicolors
+colorscheme nord
 
 " Color for line numbers
 " highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
