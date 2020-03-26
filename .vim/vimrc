@@ -417,8 +417,8 @@ noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 let g:Lf_CommandMap = {'<C-]>': ['<C-V>']}
 
 " Popup mode
-" let g:Lf_WindowPosition = 'popup' " nvim 0.4.2+
-" let g:Lf_PreviewInPopup = 1
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 
 " Use a patched font for separators
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
