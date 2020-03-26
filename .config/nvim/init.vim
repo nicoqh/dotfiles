@@ -19,7 +19,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'terryma/vim-multiple-cursors'
@@ -399,22 +399,24 @@ let NERDSpaceDelims = 1
 
 
 
-"" CtrlP
+"" Leaderf
 
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_custom_ignore = '\vnode_modules/|vendor/'
+let g:Lf_ShortcutF = "<leader>ff" " or <c-p>
 
-nnoremap <leader>f :CtrlP<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
-if executable('ag')
-  " Use Ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " NB: ctrlp_custom_ignore is not used, but Ag respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+" Open in vertical split with C-V
+let g:Lf_CommandMap = {'<C-]>': ['<C-V>']}
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+" Popup mode
+" let g:Lf_WindowPosition = 'popup' " nvim 0.4.2+
+" let g:Lf_PreviewInPopup = 1
+
+" Use a patched font for separators
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 
 
 
