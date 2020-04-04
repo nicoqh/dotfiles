@@ -13,9 +13,9 @@ endif
 call plug#begin('~/.config/nvim/plugged/')
 
 " Misc plugins
-Plug 'scrooloose/nerdtree' " { 'on': 'NERDTreeToggle' } Only if you don't start NERDTree on launch
+Plug 'preservim/nerdtree' " { 'on': 'NERDTreeToggle' } Only if you don't start NERDTree on launch
 Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
