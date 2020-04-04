@@ -21,6 +21,7 @@ install_packages() {
         curl \
         neovim \
         tree \
+        tig \
         fonts-powerline
 }
 
@@ -38,7 +39,7 @@ setup_local_gitconfig() {
 
 install_oh-my-zsh () {
     if [ -f /bin/zsh -o -f /usr/bin/zsh ]; then
-        if [[ ! -d $dir/oh-my-zsh/ ]]; then
+        if [[ ! -d ~/.oh-my-zsh/ ]]; then
             echo "Cloning robbyrussell/oh-my-zsh"
             git clone --depth=1 http://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
         else
