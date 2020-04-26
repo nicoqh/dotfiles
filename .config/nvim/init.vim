@@ -1,11 +1,9 @@
-" Neovim has sensible defaults: https://github.com/neovim/neovim/issues/2676
-" Vim differences: https://neovim.io/doc/user/vim_diff.html#vim-differences
-
 "" Plug
 
 " Download Plug if it doesn't exist
 if empty(glob("~/.config/nvim/autoload/plug.vim"))
     execute '!curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 "" Plugins
@@ -40,14 +38,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTreee
 Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
-" * iceberg
-" * nord
-" * one
-" * pinkymoon
-" * sierra
-" * two-firewatch
+" Some nice colorschemes from awesome-vim-colorschemes:
+" iceberg, nord, one, pinkymoon, sierra, two-firewatch
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/edge'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'chuling/vim-equinusocio-material'
 
 call plug#end()
 
@@ -153,7 +149,8 @@ set softtabstop=4
 set t_Co=256
 
 set termguicolors
-colorscheme nord
+colorscheme edge
+let g:edge_current_word = 'underline'
 
 " Color for line numbers
 " highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -330,7 +327,7 @@ endif
 
 
 
-"" Git commits
+"" Git commit messages
 
 " Force the cursor onto a new line after 72 characters
 autocmd FileType gitcommit set textwidth=72
@@ -503,7 +500,7 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:airline_powerline_fonts = 1
 
 " Set airline theme. Default behavior is to match the colorscheme.
-let g:airline_theme='nord'
+let g:airline_theme='edge'
 
 
 
