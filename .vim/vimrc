@@ -125,9 +125,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Next/prev tab with ctrl+left/right
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+" Adjust split sizes
+noremap <silent> <C-Left> :vertical resize -3<CR>
+noremap <silent> <C-Right> :vertical resize +3<CR>
+noremap <silent> <C-Up> :resize +3<CR>
+noremap <silent> <C-Down> :resize -3<CR>
 
 " Next buffer with Tab
 :nnoremap <Tab> :bnext<CR>
@@ -138,8 +140,7 @@ nnoremap <C-Right> :tabnext<CR>
 "" Splits and tabs
 
 " Open split panes to right and bottom
-set splitbelow
-set splitright
+set splitbelow splitright
 
 " Increase tab limit for the -p command option
 set tabpagemax=50
@@ -358,8 +359,8 @@ autocmd FileType markdown set colorcolumn=81
 "" NERDTree
 
 " Custom icons for expandable/expanded directories
-let g:NERDTreeDirArrowExpandable = '⬏'
-let g:NERDTreeDirArrowCollapsible = '⬎'
+" let g:NERDTreeDirArrowExpandable = '⬏'
+" let g:NERDTreeDirArrowCollapsible = '⬎'
 
 " Toggle
 map <F2> :NERDTreeToggle<CR>
@@ -388,7 +389,7 @@ call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#f7df1e', 'transparent')
 call NERDTreeHighlightFile('php', 'blue', 'none', '#8892be', 'transparent')
 call NERDTreeHighlightFile('py', 'blue', 'none', '#4b8bbe', 'transparent')
 call NERDTreeHighlightFile('json', 'lightyellow', 'none', 'lightyellow', 'transparent')
-call NERDTreeHighlightFile('md', 'green', 'none', 'green', 'transparent')
+call NERDTreeHighlightFile('md', 'green', 'none', '#68D391', 'transparent')
 call NERDTreeHighlightFile('yml', 'cyan', 'none', 'cyan', 'transparent')
 call NERDTreeHighlightFile('conf', 'cyan', 'none', 'cyan', 'transparent')
 call NERDTreeHighlightFile('config', 'cyan', 'none', 'cyan', 'transparent')
