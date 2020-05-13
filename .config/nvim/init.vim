@@ -287,6 +287,13 @@ autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabst
 
 
 
+"" HTML
+
+" Indent two spaces
+autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+
+
 " JSON
 
 " Indent two spaces
