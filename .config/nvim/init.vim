@@ -17,7 +17,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'terryma/vim-multiple-cursors'
@@ -44,6 +45,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/edge'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'chuling/vim-equinusocio-material'
+Plug 'hzchirs/vim-material'
 
 Plug 'unblevable/quick-scope'
 let g:qs_buftype_blacklist = ['terminal', 'nofile']
@@ -153,7 +155,7 @@ set softtabstop=4
 set t_Co=256
 
 set termguicolors
-colorscheme edge
+colorscheme one
 let g:edge_current_word = 'underline'
 
 " Color for line numbers
@@ -368,14 +370,21 @@ autocmd FileType markdown set colorcolumn=81
 map <F2> :NERDTreeToggle<CR>
 
 " Open NERDTree on launch, unless we're opening a file or a session
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+
+" Open NERDTree if opening a directory (`vim .`)
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 " Close vim if NERDTree is the only window left open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
+
+" Ignore certain files and folders
+let NERDTreeIgnore=['.git']
 
 " Automatically delete the buffer of the file you just deleted with NerdTree
 let NERDTreeAutoDeleteBuffer = 1
@@ -407,24 +416,43 @@ let NERDSpaceDelims = 1
 
 
 
+"" CtrlP
+
+" Exclude files in .gitignore
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+let g:ctrlp_match_window = 'bottom,order:ttb'
+nnoremap <leader>ff :CtrlP<CR>
+nnoremap <leader>fb :CtrlPBuffer<CR>
+nnoremap <leader>fm :CtrlPMRU<CR>
+if executable('ag')
+  " Use Ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " NB: ctrlp_custom_ignore is not used, but Ag respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+
+
 "" Leaderf
 
-let g:Lf_ShortcutF = "<leader>ff" " or <c-p>
+"let g:Lf_ShortcutF = "<leader>ff" " or <c-p>
 
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+"noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+"noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+"noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+"noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
 
 " Open in vertical split with C-V
-let g:Lf_CommandMap = {'<C-]>': ['<C-V>']}
+"let g:Lf_CommandMap = {'<C-]>': ['<C-V>']}
 
 " Popup mode
-let g:Lf_WindowPosition = 'popup'
-let g:Lf_PreviewInPopup = 1
+"let g:Lf_WindowPosition = 'popup'
+"let g:Lf_PreviewInPopup = 1
 
-" Use a patched font for separators
-let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+" Custom separators (needs a patched font)
+"let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2" }
 
 
 
