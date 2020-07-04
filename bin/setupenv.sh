@@ -18,6 +18,7 @@ install_packages() {
         terminator \
         kitty \
         htop \
+        httpie \
         curl \
         neovim \
         tree \
