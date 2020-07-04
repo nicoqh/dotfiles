@@ -22,7 +22,7 @@ install_packages() {
         neovim \
         tree \
         tig \
-        fonts-powerline
+        fonts-powerline # https://github.com/powerline/fonts/issues/281#issuecomment-570365146
 }
 
 setup_local_gitconfig() {

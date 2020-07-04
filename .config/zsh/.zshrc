@@ -68,7 +68,6 @@ ZSH_CUSTOM=$HOME/.config/zsh
 plugins=(
   git
   pj
-  debian
   httpie
   golang
   zsh-autosuggestions
