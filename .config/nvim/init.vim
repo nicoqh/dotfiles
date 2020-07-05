@@ -6,7 +6,11 @@ if empty(glob("~/.config/nvim/autoload/plug.vim"))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"" Plugins
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Plugins
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.config/nvim/plugged/')
 
@@ -57,7 +61,11 @@ call plug#end()
 
 
 
-"" Stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Stuff
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set ffs=unix
 let mapleader=","
@@ -78,7 +86,11 @@ set modelines=1
 
 
 
-"" Misc mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Misc mappings
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Quick exit to normal mode
 inoremap jj <ESC>
@@ -134,7 +146,11 @@ noremap <silent> <C-Down> :resize -3<CR>
 
 
 
-"" Splits and tabs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Splits and tabs
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Open split panes to right and bottom
 set splitbelow splitright
@@ -144,7 +160,11 @@ set tabpagemax=50
 
 
 
-"" Indenting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Indenting
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set expandtab
 set tabstop=4
@@ -153,7 +173,11 @@ set softtabstop=4
 
 
 
-"" Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Colors
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set t_Co=256
 
@@ -163,7 +187,11 @@ let g:edge_current_word = 'underline'
 
 
 
-"" UI
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" UI
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Lines to the cursor when scrolling with j/k
 set scrolloff=5
@@ -199,7 +227,11 @@ set wildmenu
 
 
 
-"" Sessions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Sessions
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't store global and local values in sessions
 set ssop-=options
@@ -209,7 +241,11 @@ set ssop-=folds
 
 
 
-"" Search
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Search
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Highlight search results
 set hlsearch
@@ -235,7 +271,11 @@ nnoremap N Nzz
 
 
 
-"" Folding
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Folding
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Don't fold by default
 set nofoldenable
@@ -250,7 +290,11 @@ set foldcolumn=2
 
 
 
-"" Swap and backup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Swap and backup
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " backup
 set nobackup
@@ -264,7 +308,11 @@ set undodir=~/.local/share/nvim/undo
 
 
 
-"" JavaScript
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" JavaScript
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Color the 81st column
 autocmd FileType javascript,javascript.jsx set colorcolumn=81
@@ -274,21 +322,33 @@ autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabst
 
 
 
-"" HTML
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" HTML
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " JSON
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
 autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
-"" PHP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" PHP
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Color the 81st column
 autocmd FileType php set colorcolumn=81
@@ -298,14 +358,22 @@ autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 
 
-"" CSS
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" CSS
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
 autocmd FileType css,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
-"" Python
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Python
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 autocmd FileType python set
     \ expandtab
@@ -325,7 +393,11 @@ endif
 
 
 
-"" Git commit messages
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Git commit messages
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Force the cursor onto a new line after 72 characters
 autocmd FileType gitcommit set textwidth=72
@@ -335,7 +407,11 @@ autocmd FileType gitcommit set colorcolumn=73
 
 
 
-"" Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Markdown
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Force the cursor onto a new line after 80 characters
 autocmd FileType markdown set textwidth=80
@@ -345,7 +421,11 @@ autocmd FileType markdown set colorcolumn=81
 
 
 
-"" NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" NERDTree
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Custom icons for expandable/expanded directories
 let g:NERDTreeDirArrowExpandable = "\u00a0" " Non-breaking space. Alt: '⬏'
@@ -377,7 +457,11 @@ let NERDTreeAutoDeleteBuffer = 1
 
 
 
-"" NERDCommenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" NERDCommenter
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let NERDSpaceDelims = 1
 
@@ -393,7 +477,11 @@ let g:NERDTreeSyntaxEnabledExtensions = ['php', 'js', 'js', 'jsx', 'html', 'css'
 
 
 
-"" CtrlP
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" CtrlP
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Exclude files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -414,7 +502,11 @@ endif
 
 
 
-"" vim-startify
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" vim-startify
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:startify_session_dir = '~/.local/share/nvim/sessions'
 let g:startify_change_to_dir = 0
@@ -432,7 +524,11 @@ let g:startify_custom_header = [
 
 
 
-"" ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" ALE
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Only run linters named in ale_linters settings.
 " let g:ale_linters_explicit = 1
@@ -468,7 +564,11 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 
 
-"" Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Syntastic
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " let g:syntastic_loc_list_height = 5
 " let g:syntastic_always_populate_loc_list = 1
@@ -491,7 +591,11 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 
 
-"" vim-airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" vim-airline
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use powerline fonts to show powerline symbols. Needs a patched font
 let g:airline_powerline_fonts = 1
@@ -501,12 +605,21 @@ let g:airline_theme='edge'
 
 
 
-"" UltiSnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" UltiSnips
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:UltiSnipsExpandTrigger="<c-j>"
 
 
 
-"" AutoPairs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" AutoPairs
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Flymode: if(a[3) results in: if(a[3])
 let g:AutoPairsFlyMode = 1
@@ -516,13 +629,22 @@ let g:AutoPairsShortcutFastWrap=''
 
 
 
-"" Gundo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Gundo
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:gundo_width = 60
 let g:gundo_preview_height = 20
 
 
 
-"" vim-multiple-cursors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" vim-multiple-cursors
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Prevent deoplete functions until multiple cursor editing is finished
 function! Multiple_cursors_before()
@@ -535,7 +657,11 @@ endfunction
 
 
 
-"" deoplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" deoplete
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable deoplete
 let g:deoplete#enable_at_startup = 1
@@ -546,14 +672,22 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 
 
-"" vim-markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" vim-markdown
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " disable concealing
 let g:vim_markdown_conceal = 0
 
 
 
-"" Nuake
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Nuake
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nnoremap <F4> :Nuake<CR>
 inoremap <F4> <C-\><C-n>:Nuake<CR>
@@ -561,7 +695,11 @@ tnoremap <F4> <C-\><C-n>:Nuake<CR>
 
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " Unsorted/tmp
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
