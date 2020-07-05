@@ -1,6 +1,6 @@
 # The location to install global items.
 # Bin files are linked to {prefix}/bin.
-prefix=~/.share/npm-global
+prefix=~/.local/share/npm-global
 
 # The location of npm’s cache directory
 cache=~/.cache/npm

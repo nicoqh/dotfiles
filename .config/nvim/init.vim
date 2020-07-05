@@ -11,13 +11,12 @@ endif
 call plug#begin('~/.config/nvim/plugged/')
 
 " Misc plugins
-Plug 'preservim/nerdtree' " { 'on': 'NERDTreeToggle' } Only if you don't start NERDTree on launch
-Plug 'ivalkeen/nerdtree-execute', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'preservim/nerdcommenter'
 Plug 'dense-analysis/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-"Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -49,6 +48,10 @@ Plug 'hzchirs/vim-material'
 
 Plug 'unblevable/quick-scope'
 let g:qs_buftype_blacklist = ['terminal', 'nofile']
+
+" DevIcons (should be last). Adds glyph icons to various plugins.
+" Needs a Nerd Font compatible font.
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -157,24 +160,6 @@ set t_Co=256
 set termguicolors
 colorscheme one
 let g:edge_current_word = 'underline'
-
-" Color for line numbers
-" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-" Color for fold column
-" highlight foldcolumn term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
-" Color for vertical splits ("border")
-" highlight VertSplit ctermfg=bg ctermbg=bg
-
-" Color for cursor column
-" highlight CursorColumn term=reverse cterm=NONE ctermbg=236 ctermfg=none gui=NONE guibg=#293739 guifg=fg
-
-" Color for cursor line
-" highlight CursorLine term=NONE cterm=NONE ctermbg=235 ctermfg=NONE gui=NONE guibg=#293739 guifg=fg
-
-" Color for syntax errors
-" highlight Error term=NONE cterm=NONE ctermbg=88 ctermfg=231 gui=NONE guibg=#870000 guifg=#ffffff
 
 
 
@@ -363,8 +348,8 @@ autocmd FileType markdown set colorcolumn=81
 "" NERDTree
 
 " Custom icons for expandable/expanded directories
-" let g:NERDTreeDirArrowExpandable = '⬏'
-" let g:NERDTreeDirArrowCollapsible = '⬎'
+let g:NERDTreeDirArrowExpandable = "\u00a0" " Non-breaking space. Alt: '⬏'
+let g:NERDTreeDirArrowCollapsible = "\u00a0" " Non-breaking space. Alt: '⬎'
 
 " Toggle
 map <F2> :NERDTreeToggle<CR>
@@ -380,7 +365,7 @@ map <F2> :NERDTreeToggle<CR>
 " Close vim if NERDTree is the only window left open
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Show hidden files in NERDTree
+" Show hidden files
 let NERDTreeShowHidden=1
 
 " Ignore certain files and folders
@@ -389,24 +374,6 @@ let NERDTreeIgnore=['.git']
 " Automatically delete the buffer of the file you just deleted with NerdTree
 let NERDTreeAutoDeleteBuffer = 1
 
-" File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('js', 'yellow', 'none', '#f7df1e', 'transparent')
-call NERDTreeHighlightFile('jsx', 'yellow', 'none', '#f7df1e', 'transparent')
-call NERDTreeHighlightFile('php', 'blue', 'none', '#8892be', 'transparent')
-call NERDTreeHighlightFile('py', 'blue', 'none', '#4b8bbe', 'transparent')
-call NERDTreeHighlightFile('json', 'lightyellow', 'none', 'lightyellow', 'transparent')
-call NERDTreeHighlightFile('md', 'green', 'none', '#68D391', 'transparent')
-call NERDTreeHighlightFile('yml', 'cyan', 'none', 'cyan', 'transparent')
-call NERDTreeHighlightFile('conf', 'cyan', 'none', 'cyan', 'transparent')
-call NERDTreeHighlightFile('config', 'cyan', 'none', 'cyan', 'transparent')
-call NERDTreeHighlightFile('css', 'lightblue', 'none', 'lightblue', 'transparent')
-call NERDTreeHighlightFile('scss', 'lightblue', 'none', 'lightblue', 'transparent')
-call NERDTreeHighlightFile('html', 'lightred', 'none', '#f06529', 'transparent')
 
 
 
@@ -416,15 +383,27 @@ let NERDSpaceDelims = 1
 
 
 
+" vim-nerdtree-syntax-highlight
+
+" Disable everything, then add what you need
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+let g:NERDTreeSyntaxEnabledExtensions = ['php', 'js', 'js', 'jsx', 'html', 'css', 'scss', 'png', 'jpg', 'json', 'md', 'py']
+
+
+
 "" CtrlP
 
 " Exclude files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
+
 nnoremap <leader>ff :CtrlP<CR>
 nnoremap <leader>fb :CtrlPBuffer<CR>
 nnoremap <leader>fm :CtrlPMRU<CR>
+
 if executable('ag')
   " Use Ag in CtrlP for listing files. Lightning fast and respects .gitignore
   " NB: ctrlp_custom_ignore is not used, but Ag respects .gitignore
@@ -435,30 +414,9 @@ endif
 
 
 
-"" Leaderf
-
-"let g:Lf_ShortcutF = "<leader>ff" " or <c-p>
-
-"noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-"noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-"noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-"noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
-
-" Open in vertical split with C-V
-"let g:Lf_CommandMap = {'<C-]>': ['<C-V>']}
-
-" Popup mode
-"let g:Lf_WindowPosition = 'popup'
-"let g:Lf_PreviewInPopup = 1
-
-" Custom separators (needs a patched font)
-"let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2" }
-
-
-
 "" vim-startify
 
-let g:startify_session_dir = '~/vimsessions'
+let g:startify_session_dir = '~/.local/share/nvim/sessions'
 let g:startify_change_to_dir = 0
 let g:startify_change_to_vcs_root = 1
 let g:startify_custom_header = [
@@ -600,23 +558,6 @@ let g:vim_markdown_conceal = 0
 nnoremap <F4> :Nuake<CR>
 inoremap <F4> <C-\><C-n>:Nuake<CR>
 tnoremap <F4> <C-\><C-n>:Nuake<CR>
-
-
-
-" nerdtree-git-plugin
-
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "~",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 
 
 

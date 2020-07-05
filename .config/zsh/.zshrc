@@ -68,11 +68,13 @@ ZSH_CUSTOM=$HOME/.config/zsh
 plugins=(
   git
   pj
-  httpie
   golang
+  zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
+
+fpath=($ZSH_CUSTOM/plugins/zsh-completions/src $fpath)
 
 source $ZSH/oh-my-zsh.sh
 
