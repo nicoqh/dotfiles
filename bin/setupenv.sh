@@ -58,6 +58,21 @@ install_oh-my-zsh () {
     fi
 }
 
+install_fonts () {
+    mkdir -p ~/.local/share/fonts/nerd
+    cd ~/.local/share/fonts/nerd
+
+    curl -fLo "RobotoMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip \
+        && unzip -o RobotoMono.zip \
+        && rm -f RobotoMono.zip
+
+    curl -fLo "Hack.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip \
+        && unzip -o Hack.zip \
+        && rm -f Hack.zip
+
+    fc-cache -vf ~/.local/share/fonts
+}
+
 
 #####################################
 
@@ -67,3 +82,5 @@ install_packages
 setup_local_gitconfig
 
 install_oh-my-zsh
+
+install_fonts
