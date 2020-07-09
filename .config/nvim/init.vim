@@ -471,7 +471,20 @@ let NERDSpaceDelims = 1
 let g:NERDTreeSyntaxDisableDefaultExtensions = 1
 let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
 let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
-let g:NERDTreeSyntaxEnabledExtensions = ['php', 'js', 'js', 'jsx', 'html', 'css', 'scss', 'png', 'jpg', 'json', 'md', 'py']
+let g:NERDTreeSyntaxEnabledExtensions = [
+            \ 'css',
+            \ 'html',
+            \ 'jpg',
+            \ 'js',
+            \ 'js',
+            \ 'json',
+            \ 'jsx',
+            \ 'md',
+            \ 'php',
+            \ 'png',
+            \ 'py',
+            \ 'scss'
+            \ ]
 
 
 
@@ -558,6 +571,10 @@ let g:AutoPairsShortcutFastWrap=''
 
 let g:gundo_width = 60
 let g:gundo_preview_height = 20
+
+if has('python3')
+    let g:gundo_prefer_python3 = 1
+endif
 
 
 
