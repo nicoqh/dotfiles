@@ -447,7 +447,7 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " Ignore certain files and folders
-let NERDTreeIgnore=['.git']
+let NERDTreeIgnore=['.git$']
 
 " Automatically delete the buffer of the file you just deleted with NerdTree
 let NERDTreeAutoDeleteBuffer = 1
