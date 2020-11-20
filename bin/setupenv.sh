@@ -23,6 +23,7 @@ install_packages() {
         neovim \
         tree \
         tig \
+        silversearcher-ag \
         fonts-powerline # https://github.com/powerline/fonts/issues/281#issuecomment-570365146
 }
 

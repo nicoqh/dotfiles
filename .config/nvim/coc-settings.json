@@ -1,4 +1,4 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["javascript"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "php"],
   "tailwindCSS.headwind.runOnSave": false
 }

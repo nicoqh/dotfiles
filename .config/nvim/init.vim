@@ -313,10 +313,10 @@ set undodir=~/.local/share/nvim/undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Color the 81st column
-autocmd FileType javascript,javascript.jsx set colorcolumn=81
+autocmd FileType javascript,javascript.jsx,typescript set colorcolumn=81
 
 " Indent two spaces
-autocmd FileType javascript,javascript.jsx setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript,javascript.jsx,typescript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 
 
@@ -494,7 +494,8 @@ let g:NERDTreeSyntaxEnabledExtensions = [
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Exclude files in .gitignore
+" Use Git as an external scanner, which will ignore files in
+" .gitignore. Note: ag automatically respects .gitignore.
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 let g:ctrlp_match_window = 'bottom,order:ttb'
