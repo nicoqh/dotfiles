@@ -1,4 +1,14 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "php"],
-  "tailwindCSS.headwind.runOnSave": false
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "php"
+  ],
+  "tailwindCSS.headwind.runOnSave": false,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  }
 }
