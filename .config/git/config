@@ -4,7 +4,7 @@
 [core]
     editor = nvim
 [alias]
-    l = log --oneline --decorate --graph
-    la = log --oneline --decorate --graph --all
-    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ll = log --pretty=fuller --abbrev-commit --stat
+    lll = log -p --pretty=fuller --abbrev-commit
     nah = !git reset --hard && git clean -df
