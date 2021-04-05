@@ -421,6 +421,18 @@ autocmd FileType markdown set colorcolumn=81
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
+" Vim Polyglot
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Speed it up by disabling HTML highlighting in PHP
+" (From StanAngeloff/php.vim)
+let g:php_html_load = 0
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
 " NERDTree
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

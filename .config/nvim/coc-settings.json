@@ -1,4 +1,5 @@
 {
+  "intelephense.licenceKey": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "typescript",
