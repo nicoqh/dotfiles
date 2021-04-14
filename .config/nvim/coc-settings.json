@@ -2,6 +2,7 @@
   "intelephense.licenceKey": "",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
+    "markdown",
     "typescript",
     "typescriptreact",
     "php"
