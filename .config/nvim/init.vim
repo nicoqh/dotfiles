@@ -200,8 +200,8 @@ set cursorline
 " Highlight current column
 set cursorcolumn
 
-" Color the 101st column. See language-specific overrides below.
-set colorcolumn=101
+" Highlight the 81st column. See language-specific overrides below.
+set colorcolumn=81
 
 " Show (relative) lines numbers
 set number
@@ -312,11 +312,12 @@ set undodir=~/.local/share/nvim/undo
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Color the 81st column
-autocmd FileType javascript,javascript.jsx,typescript set colorcolumn=81
-
 " Indent two spaces
-autocmd FileType javascript,javascript.jsx,typescript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript,javascript.jsx,typescript setlocal
+    \ expandtab
+    \ shiftwidth=2
+    \ tabstop=2
+    \ softtabstop=2
 
 
 
@@ -327,7 +328,11 @@ autocmd FileType javascript,javascript.jsx,typescript setlocal expandtab shiftwi
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
-autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html setlocal
+    \ expandtab
+    \ shiftwidth=2
+    \ tabstop=2
+    \ softtabstop=2
 
 
 
@@ -338,7 +343,11 @@ autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
-autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType json setlocal
+    \ expandtab
+    \ shiftwidth=2
+    \ tabstop=2
+    \ softtabstop=2
 
 
 
@@ -348,11 +357,12 @@ autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Color the 81st column
-autocmd FileType php set colorcolumn=81
-
 " Indent four spaces
-autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType php setlocal
+    \ expandtab
+    \ shiftwidth=4
+    \ tabstop=4
+    \ softtabstop=4
 
 
 
@@ -363,7 +373,11 @@ autocmd FileType php setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
-autocmd FileType css,scss setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css,scss setlocal
+    \ expandtab
+    \ shiftwidth=2
+    \ tabstop=2
+    \ softtabstop=2
 
 
 
@@ -398,10 +412,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Force the cursor onto a new line after 72 characters
-autocmd FileType gitcommit set textwidth=72
-
-" Color the 73rd column
-autocmd FileType gitcommit set colorcolumn=73
+autocmd FileType gitcommit set
+    \ textwidth=72 " Force the cursor onto a new line after 72 characters
+    \ colorcolumn=73
 
 
 
@@ -413,9 +426,6 @@ autocmd FileType gitcommit set colorcolumn=73
 
 " Force the cursor onto a new line after 80 characters
 autocmd FileType markdown set textwidth=80
-
-" Color the 81rd column
-autocmd FileType markdown set colorcolumn=81
 
 
 
