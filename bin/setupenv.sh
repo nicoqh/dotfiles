@@ -24,6 +24,7 @@ install_packages() {
         tree \
         tig \
         silversearcher-ag \
+        neofetch \
         fonts-powerline # https://github.com/powerline/fonts/issues/281#issuecomment-570365146
 }
 
