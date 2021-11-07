@@ -3,10 +3,10 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "markdown",
-    "php"
+    "php",
     "typescript",
     "typescriptreact",
-    "vue",
+    "vue"
   ],
   "tailwindCSS.headwind.runOnSave": false,
   "snippets.extends": {
