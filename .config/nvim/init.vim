@@ -68,7 +68,7 @@ call plug#end()
 set ffs=unix
 let mapleader=","
 set undolevels=1000
-set encoding=utf8
+set encoding=utf-8
 set hidden " It's OK to have an unwritten buffer that's not visible
 
 " Enable mouse support
@@ -649,7 +649,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -791,6 +791,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" ---
 
 " Snippet expansion
 let g:coc_snippet_next = '<c-j>'
