@@ -8,7 +8,7 @@
     "typescriptreact",
     "vue"
   ],
-  "tailwindCSS.headwind.runOnSave": false,
+  "tailwindCSS.enable": true,
   "snippets.extends": {
     "javascriptreact": ["javascript"],
     "typescriptreact": ["javascript"],

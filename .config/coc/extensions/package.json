@@ -6,9 +6,9 @@
     "coc-json": ">=1.5.0",
     "coc-phpls": ">=2.2.2",
     "coc-prettier": ">=9.3.1",
+    "@yaegassy/coc-tailwindcss3": ">=0.3.3",
     "coc-python": ">=1.2.13",
     "coc-snippets": ">=3.1.0",
-    "coc-tailwind-intellisense": "https://github.com/rodrigore/coc-tailwind-intellisense",
     "coc-tsserver": ">=1.11.1",
     "coc-vetur": ">=1.2.5",
     "coc-yank": ">=1.2.1"
