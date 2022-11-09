@@ -20,8 +20,8 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
 Plug 'preservim/nerdcommenter'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mileszs/ack.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
@@ -520,27 +520,19 @@ let g:NERDTreeSyntaxEnabledExtensions = [
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" CtrlP
+" fzf
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use Git as an external scanner, which will ignore files in
-" .gitignore. Note: ag automatically respects .gitignore.
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-let g:ctrlp_match_window = 'bottom,order:ttb'
-
-nnoremap <leader>ff :CtrlP<CR>
-nnoremap <leader>fb :CtrlPBuffer<CR>
-nnoremap <leader>fm :CtrlPMRU<CR>
-
-if executable('ag')
-  " Use Ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " NB: ctrlp_custom_ignore is not used, but Ag respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+" :Files: search files (runs $FZF_DEFAULT_COMMAND)
+" :GFiles: search files tracked by Git
+" :Buffers: search buffers
+" :Ag: do a text search with ag (The Silver Searcher)
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>fl :BLines<CR>
+nnoremap <leader>fc :Ag<CR>
+nnoremap <leader>fh :Commits<CR>
 
 
 
