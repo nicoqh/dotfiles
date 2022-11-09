@@ -12,20 +12,72 @@ ask() {
     read
 }
 
-install_packages() {
+install_common_packages() {
     echo -e "\nInstalling common packages ..."
+
     sudo apt-get update && sudo apt-get install \
         terminator \
         kitty \
         htop \
         httpie \
         curl \
-        neovim \
         tree \
         tig \
         silversearcher-ag \
+        fzf
         neofetch \
         fonts-powerline # https://github.com/powerline/fonts/issues/281#issuecomment-570365146
+}
+
+install_neovim() {
+    echo -e "\nInstalling Neovim ..."
+
+    sudo sudo add-apt-repository ppa:neovim-ppa/stable \
+        && sudo apt-get update \
+        && sudo apt install neovim
+}
+
+install_php() {
+    echo -e "\nInstalling PHP ..."
+
+    sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
+        && sudo apt-get update && sudo apt-get install \
+        php8.1-fpm \
+        php8.1-cli \
+        php8.1-mysql \
+        php8.1-curl \
+        php8.1-gd \
+        php8.1-intl \
+        php8.1-mcrypt \
+        php8.1-xml \
+        php8.1-mbstring \
+        php8.1-bz2 \
+        php8.1-zip
+
+    # https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
+    EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+    ACTUAL_CHECKSUM="$(php -r "echo hash_file('sha384', 'composer-setup.php');")"
+
+    if [ "$EXPECTED_CHECKSUM" != "$ACTUAL_CHECKSUM" ]
+    then
+        >&2 echo 'ERROR: Invalid installer checksum'
+        rm composer-setup.php
+        exit 1
+    fi
+
+    php composer-setup.php --quiet
+
+    rm composer-setup.php
+
+    sudo mv composer.phar ~/bin/composer
+}
+
+install_node() {
+    echo -e "\nInstalling NodeJS ..."
+
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    sudo apt-get install nodejs
 }
 
 setup_local_gitconfig() {
@@ -79,7 +131,13 @@ install_fonts () {
 #####################################
 
 
-install_packages
+install_common_packages
+
+install_neovim
+
+install_php
+
+install_node
 
 setup_local_gitconfig
 
