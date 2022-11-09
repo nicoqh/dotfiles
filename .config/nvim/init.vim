@@ -27,7 +27,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 Plug 'honza/vim-snippets' " Used with coc-snippets
 Plug 'simnalamburt/vim-mundo'
-Plug 'Lenovsky/nuake'
 Plug 'machakann/vim-sandwich'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'ellisonleao/glow.nvim', { 'branch': 'main' }
@@ -619,18 +618,6 @@ endif
 
 " Disable concealing
 let g:vim_markdown_conceal = 0
-
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-" Nuake
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-nnoremap <F4> :Nuake<CR>
-inoremap <F4> <C-\><C-n>:Nuake<CR>
-tnoremap <F4> <C-\><C-n>:Nuake<CR>
 
 
 
