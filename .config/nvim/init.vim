@@ -447,6 +447,31 @@ autocmd FileType markdown set textwidth=80
 " (From StanAngeloff/php.vim)
 let g:php_html_load = 0
 
+" https://github.com/sheerun/vim-polyglot/issues/478#issuecomment-721451187
+function! MarkdownLevel()
+    if getline(v:lnum) =~ '^# .*$'
+        return ">1"
+    endif
+    if getline(v:lnum) =~ '^## .*$'
+        return ">2"
+    endif
+    if getline(v:lnum) =~ '^### .*$'
+        return ">3"
+    endif
+    if getline(v:lnum) =~ '^#### .*$'
+        return ">4"
+    endif
+    if getline(v:lnum) =~ '^##### .*$'
+        return ">5"
+    endif
+    if getline(v:lnum) =~ '^###### .*$'
+        return ">6"
+    endif
+    return "="
+endfunction
+au BufEnter *.md setlocal foldexpr=MarkdownLevel()
+au BufEnter *.md setlocal foldmethod=expr
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -812,15 +837,8 @@ let g:coc_snippet_prev = '<c-k>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" Unsorted/tmp
+" Goyo
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
-
-:tnoremap <Esc> <C-\><C-n>
+" 4 cols fewer than assumed?
+let g:goyo_width = 84
