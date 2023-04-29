@@ -26,6 +26,7 @@ install_common_packages() {
         silversearcher-ag \
         fzf
         neofetch \
+        git-quick-stats \
         fonts-powerline # https://github.com/powerline/fonts/issues/281#issuecomment-570365146
 }
 
