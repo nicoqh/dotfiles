@@ -820,7 +820,11 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+"
 " Custom CoC
+"
+
+let g:coc_global_extensions = ['coc-css', 'coc-eslint', 'coc-html', 'coc-json', 'coc-python', 'coc-snippets', 'coc-tsserver', 'coc-yank', 'coc-prettier', 'coc-phpls', '@yaegassy/coc-tailwindcss3']
 
 " Snippet expansion
 
