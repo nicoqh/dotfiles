@@ -38,6 +38,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTree
 
 " Syntax
+let g:polyglot_disabled = ['php'] " Archived
 Plug 'sheerun/vim-polyglot'
 
 " Colorschemes
