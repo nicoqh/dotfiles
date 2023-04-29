@@ -6,6 +6,7 @@
     "php",
     "typescript",
     "typescriptreact",
+    "json",
     "vue"
   ],
   "tailwindCSS.enable": true,
