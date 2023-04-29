@@ -29,7 +29,8 @@ Plug 'honza/vim-snippets' " Used with coc-snippets
 Plug 'simnalamburt/vim-mundo'
 Plug 'machakann/vim-sandwich'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'ellisonleao/glow.nvim', { 'branch': 'main' }
+" Plug 'ellisonleao/glow.nvim', { 'branch': 'main' }
+Plug 'junegunn/goyo.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -132,6 +133,12 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Navigate in insert mode
+imap <C-h> <Left>
+imap <C-j> <Down>
+imap <C-k> <Up>
+imap <C-l> <Right>
 
 " Adjust split sizes
 noremap <silent> <C-Left> :vertical resize -3<CR>
@@ -314,7 +321,7 @@ set undodir=~/.local/share/nvim/undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Indent two spaces
-autocmd FileType javascript,javascript.jsx,typescript setlocal
+autocmd FileType javascript,javascriptreact,javascript.jsx,typescript setlocal
     \ expandtab
     \ shiftwidth=2
     \ tabstop=2
@@ -610,6 +617,20 @@ endif
 
 " Disable concealing
 let g:vim_markdown_conceal = 0
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Fugitive
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+nnoremap <silent><leader>gs :Git<CR>
+nnoremap <silent><leader>gd :Gdiff<CR>
+nnoremap <silent><leader>ga :Git add -p %<CR>
+nnoremap <silent><leader>gc :Git commit<CR>
 
 
 
