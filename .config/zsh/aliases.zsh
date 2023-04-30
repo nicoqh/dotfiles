@@ -17,3 +17,7 @@ alias aac='sudo apt autoclean'
 alias aar='sudo apt autoremove'
 
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
+
+alias notebook='cd ~/projects/notebook && vim'
+
+alias t='todo.sh'
