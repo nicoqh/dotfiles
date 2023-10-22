@@ -16,7 +16,6 @@ install_common_packages() {
     echo -e "\nInstalling common packages ..."
 
     sudo apt-get update && sudo apt-get install \
-        terminator \
         kitty \
         htop \
         httpie \
@@ -27,7 +26,6 @@ install_common_packages() {
         fzf
         neofetch \
         git-quick-stats \
-        fonts-powerline # https://github.com/powerline/fonts/issues/281#issuecomment-570365146
 }
 
 install_neovim() {
@@ -43,17 +41,21 @@ install_php() {
 
     sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
         && sudo apt-get update && sudo apt-get install \
-        php8.1-fpm \
-        php8.1-cli \
-        php8.1-mysql \
-        php8.1-curl \
-        php8.1-gd \
-        php8.1-intl \
-        php8.1-mcrypt \
-        php8.1-xml \
-        php8.1-mbstring \
-        php8.1-bz2 \
-        php8.1-zip
+        php8.2-cli \
+        php8.2-mysql \
+        php8.2-curl \
+        php8.2-gd \
+        php8.2-intl \
+        php8.2-mcrypt \
+        php8.2-xml \
+        php8.2-mbstring \
+        php8.2-bz2 \
+        php8.2-zip
+
+    ask "Do you need PHP FPM?"
+    if [[ "$REPLY" =~ ^[Yy]$ ]]; then
+        sudo apt install php8.2-fpm
+    fi
 
     # https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
     EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
@@ -103,7 +105,7 @@ install_oh-my-zsh () {
         fi
 
         ask "Do you want to make Zsh your default shell?"
-        if [[ "$REPLY" =~ ^[Yy]$  ]]; then
+        if [[ "$REPLY" =~ ^[Yy]$ ]]; then
             chsh -s $(which zsh)
         fi
     else
@@ -117,13 +119,17 @@ install_fonts () {
     mkdir -p ~/.local/share/fonts/nerd
     cd ~/.local/share/fonts/nerd
 
-    curl -fLo "RobotoMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/RobotoMono.zip \
+    curl -fLo "RobotoMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/RobotoMono.zip \
         && unzip -o RobotoMono.zip \
         && rm -f RobotoMono.zip
 
-    curl -fLo "Hack.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip \
+    curl -fLo "Hack.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip \
         && unzip -o Hack.zip \
         && rm -f Hack.zip
+
+    curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip \
+        && unzip -o FiraCode.zip \
+        && rm -f FiraCode.zip
 
     fc-cache -vf ~/.local/share/fonts
 }
