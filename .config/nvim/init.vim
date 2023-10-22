@@ -41,9 +41,15 @@ Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTree
 let g:polyglot_disabled = ['php'] " Archived
 Plug 'sheerun/vim-polyglot'
 
+" AI
+Plug 'github/copilot.vim'
+
 " Colorschemes
 " Some nice colorschemes from awesome-vim-colorschemes:
 " iceberg, nord, one, pinkymoon, sierra, two-firewatch
+Plug 'preservim/vim-colors-pencil'
+Plug 'romgrk/doom-one.vim'
+Plug 'EdenEast/nightfox.nvim'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/edge'
 Plug 'drewtempelmeyer/palenight.vim'
@@ -189,8 +195,13 @@ set softtabstop=4
 set t_Co=256
 
 set termguicolors
-colorscheme one
+colorscheme nightfox
+
+" Edge color scheme:
 let g:edge_current_word = 'underline'
+
+" nightfox color scheme:
+highlight Normal guibg=#192230
 
 
 
@@ -203,7 +214,7 @@ let g:edge_current_word = 'underline'
 " Lines to the cursor when scrolling with j/k
 set scrolloff=5
 
-" Highlight current line.
+" Highlight current line
 set cursorline
 
 " Highlight current column
@@ -847,3 +858,18 @@ let g:coc_snippet_prev = '<c-k>'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 4 cols fewer than assumed?
 let g:goyo_width = 84
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Copilot
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:copilot_filetypes = {
+    \ 'markdown': v:false,
+    \ 'text': v:false,
+    \ 'xml': v:false,
+    \ 'sql': v:false,
+    \ 'log': v:false,
+    \ }
