@@ -37,24 +37,27 @@ install_neovim() {
 }
 
 install_php() {
-    echo -e "\nInstalling PHP ..."
+    PHP_VERSION=8.2
+
+    echo -e "\nInstalling PHP $PHP_VERSION ..."
+
 
     sudo LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php \
         && sudo apt-get update && sudo apt-get install \
-        php8.2-cli \
-        php8.2-mysql \
-        php8.2-curl \
-        php8.2-gd \
-        php8.2-intl \
-        php8.2-mcrypt \
-        php8.2-xml \
-        php8.2-mbstring \
-        php8.2-bz2 \
-        php8.2-zip
+        php$PHP_VERSION-cli \
+        php$PHP_VERSION-mysql \
+        php$PHP_VERSION-curl \
+        php$PHP_VERSION-gd \
+        php$PHP_VERSION-intl \
+        php$PHP_VERSION-mcrypt \
+        php$PHP_VERSION-xml \
+        php$PHP_VERSION-mbstring \
+        php$PHP_VERSION-bz2 \
+        php$PHP_VERSION-zip
 
     ask "Do you need PHP FPM?"
     if [[ "$REPLY" =~ ^[Yy]$ ]]; then
-        sudo apt install php8.2-fpm
+        sudo apt install php$PHP_VERSION-fpm
     fi
 
     # https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
@@ -77,10 +80,17 @@ install_php() {
 }
 
 install_node() {
+    # Version
+    NODE_MAJOR=20
+
+    # https://github.com/nodesource/distributions#ubuntu-versions
+
     echo -e "\nInstalling NodeJS ..."
 
-    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-    sudo apt-get install nodejs
+    sudo apt-get update && sudo apt-get install -y ca-certificates curl gnupg \
+        && sudo mkdir -p /etc/apt/keyrings \
+        && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
+        && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 }
 
 setup_local_gitconfig() {
