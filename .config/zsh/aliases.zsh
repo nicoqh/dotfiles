@@ -18,6 +18,6 @@ alias aar='sudo apt autoremove'
 
 alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 
-alias notebook='cd ~/projects/notebook && vim'
+alias notebook='cd ~/projects/notebook && nvim -c ":Files"'
 
 alias t='todo.sh'
