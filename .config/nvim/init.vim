@@ -17,19 +17,18 @@ call plug#begin('~/.config/nvim/plugged/')
 " Misc plugins
 Plug 'preservim/nerdtree' ", { 'on': 'NERDTreeToggle' }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': 'NERDTreeToggle' }
-Plug 'preservim/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jiangmiao/auto-pairs'
-Plug 'mhinz/vim-startify'
+Plug 'nvimdev/dashboard-nvim'
 Plug 'honza/vim-snippets' " Used with coc-snippets
 Plug 'simnalamburt/vim-mundo'
 Plug 'machakann/vim-sandwich'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" Plug 'ellisonleao/glow.nvim', { 'branch': 'main' }
 Plug 'junegunn/goyo.vim'
 
 " Git
@@ -38,7 +37,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin' " requires NERDTree
 
 " Syntax
-let g:polyglot_disabled = ['php'] " Archived
+let g:polyglot_disabled = ['php'] " Archived repo
 Plug 'sheerun/vim-polyglot'
 
 " AI
@@ -47,6 +46,8 @@ Plug 'github/copilot.vim'
 " Colorschemes
 " Some nice colorschemes from awesome-vim-colorschemes:
 " iceberg, nord, one, pinkymoon, sierra, two-firewatch
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'folke/tokyonight.nvim'
 Plug 'preservim/vim-colors-pencil'
 Plug 'romgrk/doom-one.vim'
 Plug 'EdenEast/nightfox.nvim'
@@ -75,7 +76,7 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set ffs=unix
-let mapleader=","
+let mapleader=" "
 set undolevels=1000
 set encoding=utf-8
 set hidden " It's OK to have an unwritten buffer that's not visible
@@ -211,7 +212,7 @@ highlight Normal guibg=#192230
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Lines to the cursor when scrolling with j/k
+" Lines from top/bottom to the cursor when scrolling
 set scrolloff=5
 
 " Highlight current line
@@ -528,37 +529,14 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" NERDCommenter
+" Comment.nvim
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let NERDSpaceDelims = 1
-
-
-
-" vim-nerdtree-syntax-highlight
-
-" Disable everything, then add what you need
-let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
-let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
-let g:NERDTreeSyntaxEnabledExtensions = [
-            \ 'css',
-            \ 'html',
-            \ 'jpg',
-            \ 'js',
-            \ 'js',
-            \ 'json',
-            \ 'jsx',
-            \ 'md',
-            \ 'php',
-            \ 'png',
-            \ 'py',
-            \ 'scss'
-            \ ]
+lua << EOF
+require('Comment').setup()
+EOF
 
 
 
