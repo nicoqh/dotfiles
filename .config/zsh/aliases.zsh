@@ -1,4 +1,5 @@
 alias dotfiles="git --work-tree=$HOME/ --git-dir=$HOME/.local/share/dotfiles.git"
+compdef dotfiles=git
 
 alias l='ls -lh --group-directories-first'
 alias ll='ls -lAh --group-directories-first'
