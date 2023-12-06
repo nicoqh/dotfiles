@@ -196,13 +196,26 @@ set softtabstop=4
 set t_Co=256
 
 set termguicolors
-colorscheme nightfox
+colorscheme catppuccin-macchiato
 
 " Edge color scheme:
-let g:edge_current_word = 'underline'
+"let g:edge_current_word = 'underline'
 
 " nightfox color scheme:
-highlight Normal guibg=#192230
+"highlight Normal guibg=#192230
+
+" Cycle through color schemes
+let g:colors = getcompletion('', 'color')
+func! NextColors()
+    let idx = index(g:colors, g:colors_name)
+    return (idx + 1 >= len(g:colors) ? g:colors[0] : g:colors[idx + 1])
+endfunc
+func! PrevColors()
+    let idx = index(g:colors, g:colors_name)
+    return (idx - 1 < 0 ? g:colors[-1] : g:colors[idx - 1])
+endfunc
+nnoremap <C-8> :exe "colo " .. NextColors()<CR>
+nnoremap <C-9> :exe "colo " .. PrevColors()<CR>
 
 
 
@@ -499,6 +512,7 @@ let g:NERDTreeDirArrowCollapsible = "\u00a0" " Non-breaking space. Alt: '⬎'
 
 " Toggle
 map <F2> :NERDTreeToggle<CR>
+map <F3> :NERDTreeFind<CR>
 
 " Open NERDTree on launch, unless we're opening a file or a session
 " autocmd StdinReadPre * let s:std_in=1
