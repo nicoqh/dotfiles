@@ -24,6 +24,8 @@ install_common_packages() {
         tig \
         silversearcher-ag \
         fzf
+        ripgrep \
+        fd-find \
         neofetch \
         git-quick-stats \
 }
