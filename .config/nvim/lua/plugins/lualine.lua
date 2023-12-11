@@ -4,9 +4,12 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-      options = {
-        icons_enabled = true,
-        theme = 'auto', -- Attempt to load a theme for your colorscheme
+    options = {
+      icons_enabled = true,
+      theme = 'auto', -- Attempt to load a theme for your colorscheme
+      disabled_filetypes = {
+        'alpha',      -- alpha-nvim dashboard plugin
       }
+    }
   },
 }

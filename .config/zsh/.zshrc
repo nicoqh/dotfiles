@@ -70,6 +70,8 @@ ZSH_CUSTOM=$HOME/.config/zsh
 plugins=(
   git
   pj
+  zsh-autosuggestions
+  zsh-syntax-highlighting
   # golang
 )
 

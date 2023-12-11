@@ -3,6 +3,11 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    dependencies = {
+      -- Provides the 'autotag' module
+      { "windwp/nvim-ts-autotag" },
+      -- opts = { enable_close_on_slash = false }
+    },
     config = function()
       require("nvim-treesitter.configs").setup({
         -- Parsers
@@ -23,7 +28,7 @@ return {
         -- Highlighting
         highlight = {
           enable = true,
-          disable = function(lang, buf)
+          disable = function(_, buf)
             local max_filesize = 100 * 1024 -- 100 KB
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
             if ok and stats and stats.size > max_filesize then
@@ -44,6 +49,11 @@ return {
         incremental_selection = {
           --
         },
+
+        -- Auto tag, provided by windwp/nvim-ts-autotag
+        autotag = {
+          enable = true,
+        }
       })
     end
   },

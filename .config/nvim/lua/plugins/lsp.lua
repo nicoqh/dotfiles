@@ -1,3 +1,5 @@
+local secrets = require('../secrets')
+
 return {
   {
     ----------------------------------------
@@ -58,21 +60,26 @@ return {
     'neovim/nvim-lspconfig',
     config = function()
       local lspconfig = require('lspconfig')
+      local cmpCapabilities = require('cmp_nvim_lsp').default_capabilities()
 
+      -------------------------------------
       -- Setup language servers.
       -- See mason-lspconfig config
-      lspconfig.html.setup {}
-      lspconfig.cssls.setup {}
-      lspconfig.jsonls.setup {}
-      lspconfig.tailwindcss.setup {}
+      -------------------------------------
+      lspconfig.html.setup { capabilities = cmpCapabilities }
+      lspconfig.cssls.setup { capabilities = cmpCapabilities }
+      lspconfig.jsonls.setup { capabilities = cmpCapabilities }
+      lspconfig.tailwindcss.setup { capabilities = cmpCapabilities }
       lspconfig.tsserver.setup {
+        capabilities = cmpCapabilities,
         on_attach = function(client)
           -- Format with Prettier instead of the language server
           client.server_capabilities.documentFormattingProvider = false
         end,
       }
-      lspconfig.marksman.setup {}
+      lspconfig.marksman.setup { capabilities = cmpCapabilities }
       lspconfig.lua_ls.setup({
+        capabilities = cmpCapabilities,
         -- Copied from https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#lua_ls
         on_init = function(client)
           local path = client.workspace_folders[1].name
@@ -104,8 +111,9 @@ return {
         end
       })
       lspconfig.intelephense.setup {
+        capabilities = cmpCapabilities,
         init_options = {
-          licenceKey = '', -- TODO
+          licenceKey = secrets.intelephense.licenceKey,
         }
       }
 

@@ -1,5 +1,6 @@
 {
   "intelephense.licenceKey": "",
+  "intelephense.environment.phpVersion": "8.2.0",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "javascriptreact",
