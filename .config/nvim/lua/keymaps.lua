@@ -6,7 +6,7 @@ keymap = vim.keymap
 
 -- Saving and quitting
 keymap.set("n", "<CR>", vim.cmd.update)
---vim.keymap.set("n", "<leader>s", vim.cmd.update, { desc = "Save (:update)" })
+vim.keymap.set("n", "<leader>w", vim.cmd.update, { desc = "Save (:update)" })
 keymap.set("n", "<leader>q", vim.cmd.q, { desc = "Quit" })
 keymap.set("n", "<leader>Q", vim.cmd.qall, { desc = "Quit all" })
 
@@ -56,4 +56,4 @@ keymap.set("n", "<leader>td", ":tabclose<CR>", { desc = "Close tab" })
 keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close tab" })
 
 -- Terminal
-keymap.set("t", "<Esc>", "<C-\\><C-n>") -- Consider <Esc><Esc>
+keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
