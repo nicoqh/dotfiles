@@ -66,6 +66,7 @@ return {
       -- Setup language servers.
       -- See mason-lspconfig config
       -------------------------------------
+      -- `capabilities` will be merged.
       lspconfig.html.setup { capabilities = cmpCapabilities }
       lspconfig.cssls.setup { capabilities = cmpCapabilities }
       lspconfig.jsonls.setup { capabilities = cmpCapabilities }
@@ -73,8 +74,10 @@ return {
       lspconfig.tsserver.setup {
         capabilities = cmpCapabilities,
         on_attach = function(client)
-          -- Format with Prettier instead of the language server
+          -- Format with Prettier instead of the language server.
+          -- Not really needed if we filter out servers in vim.lsp.buf.format()
           client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
         end,
       }
       lspconfig.marksman.setup { capabilities = cmpCapabilities }
@@ -215,10 +218,7 @@ return {
           vim.lsp.buf.format({
             async = false,
             filter = function(client)
-              -- TODO: tsserver documentFormattingProvider=false, but still called here
-              -- Filtering instead.
               return client.name ~= "tsserver"
-              --require("notify")("Format attempt using: " .. client.name)
               --return true
             end,
           })

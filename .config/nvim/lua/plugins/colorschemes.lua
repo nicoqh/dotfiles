@@ -14,7 +14,25 @@ return {
           percentage = 0.10, -- Percentage of the shade to apply to the inactive window
         },
         intergrations = {
+          -- https://github.com/catppuccin/nvim#integrations
+          -- What highlight groups are being modifier:
+          -- https://github.com/catppuccin/nvim/tree/main/lua/catppuccin/groups/integrations
           --
+          -- Many of these are enabled by default.
+          alpha = true,
+          enabled = true,
+          gitsigns = true,
+          harpoon = true,
+          lsp_trouble = false,
+          markdown = true,
+          mason = true,
+          notify = true,
+          nvimtree = true,
+          telescope = {
+            treesitter = true,
+            treesitter_context = false,
+            which_key = true,
+          },
         }
       })
 

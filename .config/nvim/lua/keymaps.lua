@@ -2,7 +2,7 @@
 -- Non-plugin specific keymaps
 ----------------------------------------
 
-keymap = vim.keymap
+local keymap = vim.keymap
 
 -- Saving and quitting
 keymap.set("n", "<CR>", vim.cmd.update)
@@ -12,10 +12,13 @@ keymap.set("n", "<leader>Q", vim.cmd.qall, { desc = "Quit all" })
 
 -- Movement
 -- Move and center cursor while moving half a page
-keymap.set('n', '<C-j>', '<C-d>zz')
-keymap.set('n', '<C-k>', '<C-u>zz')
-keymap.set('v', '<C-j>', '<C-d>zz')
-keymap.set('v', '<C-k>', '<C-u>zz')
+keymap.set('n', '<C-d>', '<C-d>zz', { noremap = false })
+keymap.set('n', '<C-u>', '<C-u>zz', { noremap = false })
+keymap.set('v', '<C-d>', '<C-d>zz', { noremap = false })
+keymap.set('v', '<C-u>', '<C-u>zz', { noremap = false })
+-- Alternative:
+--keymap.set('n', '<C-d>', 'Lzz')
+--keymap.set('n', '<C-u>', 'Hzz')
 
 -- Split navigation
 keymap.set("n", "<C-h>", "<C-w>h")
@@ -33,6 +36,9 @@ keymap.set("n", "<C-down>", ":resize -3<CR>")
 keymap.set("n", "<BS>", ":noh<CR>", { desc = "Clear search highlight" })
 keymap.set('n', 'n', 'nzzzv') -- Center search result
 keymap.set('n', 'N', 'Nzzzv') -- Center search result
+
+-- Undo
+keymap.set('n', 'U', '<C-r>') -- Redo
 
 -- Quick exit to normal mode
 keymap.set("i", "jk", "<Esc>")

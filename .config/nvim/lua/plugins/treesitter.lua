@@ -13,6 +13,7 @@ return {
         -- Parsers
         ensure_installed = {
           "diff",
+          "html",
           "javascript",
           "json",
           "lua",
@@ -59,6 +60,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
+    init = function()
+      vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true })
+    end,
     config = function()
       require 'treesitter-context'.setup({
         enable = true,
@@ -75,5 +79,30 @@ return {
         on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
       })
     end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = { { "nvim-treesitter/nvim-treesitter" } },
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["af"] = { query = "@function.outer", desc = "outer function" },
+              ["if"] = { query = "@function.inner", desc = "inner function" },
+              ["ac"] = { query = "@class.inner", desc = "outer class" },
+              ["ic"] = { query = "@class.inner", desc = "inner class" },
+            },
+            selection_modes = {
+              ['@parameter.outer'] = 'v', -- charwise
+              ['@function.outer'] = 'V',  -- linewise
+              ['@class.outer'] = '<c-v>', -- blockwise
+            },
+          }
+        }
+      }
+    end,
   },
 }

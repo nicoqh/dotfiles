@@ -19,7 +19,7 @@ return {
       desc = "Laravel Application Routes",
     },
   },
-  ft = 'php',
+  event = { "VeryLazy" },
   config = function()
     require("laravel").setup({
       lsp_server = "intelephense",

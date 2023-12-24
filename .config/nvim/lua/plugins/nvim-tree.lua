@@ -14,6 +14,14 @@ return {
       filters = {
         git_ignored = false,
       },
+      view = {
+        preserve_window_proportions = false,
+      },
+      actions = {
+        open_file = {
+          resize_window = false,
+        },
+      },
       on_attach = function(bufnr)
         local api = require "nvim-tree.api"
 

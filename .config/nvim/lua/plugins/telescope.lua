@@ -9,6 +9,13 @@ return {
   config = function()
     require('telescope').setup({
       defaults = {
+        vimgrep_arguments = {
+          -- Ignore lock files when grepping.
+          -- Defaults: See https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/config.lua
+          "rg", "--color=never", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case",
+          "--glob", "!composer.lock",
+          "--glob", "!package-lock.json",
+        },
         mappings = {
           i = {
             -- Map actions.which_key to <C-h> (default: <C-/>)
