@@ -1,6 +1,6 @@
 return {
-  'windwp/nvim-autopairs',
   -- Promoted by nvim-lspconfig
+  'windwp/nvim-autopairs',
   event = "InsertEnter",
   opts = {
     check_ts = true, -- Check Treesitter

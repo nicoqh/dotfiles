@@ -33,6 +33,7 @@ return {
         api.config.mappings.default_on_attach(bufnr)
 
         -- Custom mappings
+        vim.keymap.del('n', '<C-e>', { buffer = bufnr })
         vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
       end,
     })

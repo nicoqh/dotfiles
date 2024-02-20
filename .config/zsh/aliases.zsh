@@ -22,3 +22,4 @@ alias sail='[ -f sail ] && bash sail || bash vendor/bin/sail'
 alias notebook='cd ~/projects/notebook && nvim -c ":Telescope find_files"'
 
 alias t='todo.sh'
+alias lg='lazygit'
