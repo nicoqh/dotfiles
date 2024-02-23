@@ -54,6 +54,7 @@ return {
         -- Auto tag, provided by windwp/nvim-ts-autotag
         autotag = {
           enable = true,
+          filetypes = { 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'xml', 'markdown' },
         }
       })
     end
