@@ -33,6 +33,7 @@ return {
         "jsonls",       -- JSON
         "tailwindcss",  -- Tailwind
         "tsserver",     -- TypeScript/JavaScript
+        "eslint",       -- TypeScript/JavaScript
         "marksman",     -- Markdown
         "intelephense", -- PHP
         "lua_ls",       -- Lua
@@ -80,6 +81,7 @@ return {
           client.server_capabilities.documentRangeFormattingProvider = false
         end,
       }
+      lspconfig.eslint.setup {}
       lspconfig.marksman.setup { capabilities = cmpCapabilities }
       lspconfig.lua_ls.setup({
         capabilities = cmpCapabilities,
@@ -231,7 +233,6 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.prettier, -- Will fall back to global `prettier`
-          null_ls.builtins.diagnostics.eslint,  -- Will fall back to global `eslint`
           --null_ls.builtins.formatting.prettierd,
         },
       })
