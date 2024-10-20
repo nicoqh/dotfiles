@@ -32,7 +32,7 @@ return {
         "cssls",        -- CSS
         "jsonls",       -- JSON
         "tailwindcss",  -- Tailwind
-        "tsserver",     -- TypeScript/JavaScript
+        "ts_ls",        -- TypeScript/JavaScript
         "eslint",       -- TypeScript/JavaScript
         "marksman",     -- Markdown
         "intelephense", -- PHP
@@ -72,7 +72,7 @@ return {
       lspconfig.cssls.setup { capabilities = cmpCapabilities }
       lspconfig.jsonls.setup { capabilities = cmpCapabilities }
       lspconfig.tailwindcss.setup { capabilities = cmpCapabilities }
-      lspconfig.tsserver.setup {
+      lspconfig.ts_ls.setup {
         capabilities = cmpCapabilities,
         on_attach = function(client)
           -- Format with Prettier instead of the language server.
@@ -220,7 +220,7 @@ return {
           vim.lsp.buf.format({
             async = false,
             filter = function(client)
-              return client.name ~= "tsserver"
+              return client.name ~= "ts_ls"
               --return true
             end,
           })

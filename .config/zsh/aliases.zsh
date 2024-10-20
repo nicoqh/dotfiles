@@ -11,7 +11,7 @@ if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-alias greview='nvim `git diff --staged --name-only`'
+alias greview='nvim `git diff --staged --diff-filter=AM --name-only`'
 
 alias adu='sudo apt update && sudo apt dist-upgrade'
 alias aac='sudo apt autoclean'
