@@ -43,7 +43,8 @@ vim.api.nvim_create_autocmd(
   {
     callback = function()
       local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
-      if { row, col } ~= { 0, 0 } then
+      local last_row = vim.api.nvim_buf_line_count(0)
+      if { row, col } ~= { 0, 0 } and row <= last_row then
         vim.api.nvim_win_set_cursor(0, { row, 0 })
       end
     end,
@@ -53,7 +54,7 @@ vim.api.nvim_create_autocmd(
 -- Search
 vim.opt.hlsearch = true   -- Highlight search
 vim.opt.incsearch = true  -- Search as you type
-vim.opt.ignorecase = true -- Ignore case
+vim.opt.ignorecase = true -- Ignore case in search and command completion
 vim.opt.smartcase = true  -- Don't ignore case if uppercase letter
 
 -- Swap and backup
@@ -103,3 +104,5 @@ vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text
 vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "❢", numhl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint" })
 vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "𝓲", numhl = "DiagnosticSignInfo" })
+
+vim.opt.virtualedit = "block" -- Virtual editing (cursor can be anywhere) in visual block mode

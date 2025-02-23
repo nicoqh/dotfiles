@@ -9,7 +9,7 @@ return {
     resession.setup()
 
     -- Keymaps
-    vim.keymap.set('n', '<leader>ss', resession.save, { desc = 'Save session ' })
+    vim.keymap.set('n', '<leader>sa', resession.save, { desc = 'Create session ' })
     vim.keymap.set('n', '<leader>sl', resession.load, { desc = 'Load session ' })
     vim.keymap.set('n', '<leader>sd', resession.delete, { desc = 'Delete session ' })
     vim.keymap.set('n', '<leader>sf', resession.list, { desc = 'List sessions ' })

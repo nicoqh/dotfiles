@@ -209,10 +209,12 @@ return {
           '*.json',
           '*.jsx',
           '*.lua',
-          '*.yaml',
           '*.md',
           '*.php',
           '*.scss',
+          '*.ts',
+          '*.tsx',
+          '*.yaml',
         },
         callback = function()
           -- Format buffer using the attached language server.

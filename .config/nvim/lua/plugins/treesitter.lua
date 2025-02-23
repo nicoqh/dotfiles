@@ -12,6 +12,7 @@ return {
       require("nvim-treesitter.configs").setup({
         -- Parsers
         ensure_installed = {
+          "bash",
           "diff",
           "html",
           "javascript",
@@ -20,10 +21,12 @@ return {
           "markdown",
           "php",
           "python",
+          "query",
           "typescript",
           "vim",
           "yaml",
         },
+
         sync_install = false,
 
         -- Highlighting
@@ -48,13 +51,30 @@ return {
 
         -- Incremental selection
         incremental_selection = {
-          --
+          enable = true,
+          keymaps = {
+            init_selection = "<leader>ss", -- Set to false to disable one of the mappings
+            node_incremental = "<leader>si",
+            scope_incremental = "<leader>sc",
+            node_decremental = "<leader>sd",
+          },
         },
 
         -- Auto tag, provided by windwp/nvim-ts-autotag
         autotag = {
           enable = true,
-          filetypes = { 'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'xml', 'markdown' },
+          filetypes = {
+            -- Explicitly list file types in order to disable PHP
+            'html',
+            'javascript',
+            'typescript',
+            'javascriptreact',
+            'typescriptreact',
+            'svelte',
+            'vue',
+            'xml',
+            'markdown',
+          },
         }
       })
     end
@@ -91,9 +111,10 @@ return {
             enable = true,
             lookahead = true,
             keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
               ["af"] = { query = "@function.outer", desc = "outer function" },
               ["if"] = { query = "@function.inner", desc = "inner function" },
-              ["ac"] = { query = "@class.inner", desc = "outer class" },
+              ["ac"] = { query = "@class.outer", desc = "outer class" },
               ["ic"] = { query = "@class.inner", desc = "inner class" },
             },
             selection_modes = {
