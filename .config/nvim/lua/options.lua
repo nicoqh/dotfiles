@@ -56,6 +56,7 @@ vim.opt.hlsearch = true   -- Highlight search
 vim.opt.incsearch = true  -- Search as you type
 vim.opt.ignorecase = true -- Ignore case in search and command completion
 vim.opt.smartcase = true  -- Don't ignore case if uppercase letter
+vim.opt.inccommand = "split"
 
 -- Swap and backup
 vim.opt.backup = false
