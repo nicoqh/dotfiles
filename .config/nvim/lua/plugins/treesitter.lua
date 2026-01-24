@@ -14,6 +14,8 @@ return {
         ensure_installed = {
           "bash",
           "diff",
+          "git_rebase",
+          "gitcommit",
           "html",
           "javascript",
           "json",

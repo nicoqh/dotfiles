@@ -98,12 +98,6 @@ return {
 
       vim.lsp.config('ts_ls', {
         capabilities = cmpCapabilities,
-        on_attach = function(client)
-          -- Format with Prettier instead of the language server.
-          -- Not really needed if we filter out servers in vim.lsp.buf.format()
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-        end,
       })
 
       vim.lsp.config('eslint', {
@@ -118,7 +112,7 @@ return {
         capabilities = cmpCapabilities,
         init_options = {
           licenceKey = secrets.intelephense.licenceKey,
-        }
+        },
       })
 
       vim.lsp.config('lua_ls', {
@@ -269,7 +263,12 @@ return {
           vim.lsp.buf.format({
             async = false,
             filter = function(client)
-              return client.name ~= "ts_ls"
+              local disabled = {
+                intelephense = true,
+                ts_ls = true,
+              }
+
+              return not disabled[client.name]
               --return true
             end,
           })
@@ -283,6 +282,12 @@ return {
         sources = {
           null_ls.builtins.formatting.prettier, -- Will fall back to global `prettier`
           --null_ls.builtins.formatting.prettierd,
+
+          null_ls.builtins.formatting.phpcsfixer.with({
+            -- Uses your project config automatically if present:
+            -- .php-cs-fixer.php or .php-cs-fixer.dist.php
+            command = "./tools/php-cs-fixer/vendor/bin/php-cs-fixer",
+          }),
         },
       })
     end,
