@@ -42,7 +42,7 @@ return {
 
       vim.api.nvim_create_autocmd("TermOpen", {
         -- If you only want these mappings for ToggleTerm use term://*toggleterm#* instead
-        pattern = "term://term*",
+        pattern = "term://*",
         callback = function()
           set_terminal_keymaps()
         end

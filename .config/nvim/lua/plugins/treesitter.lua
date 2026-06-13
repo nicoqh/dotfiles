@@ -3,11 +3,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    dependencies = {
-      -- Provides the 'autotag' module
-      { "windwp/nvim-ts-autotag" },
-      -- opts = { enable_close_on_slash = false }
-    },
     config = function()
       require("nvim-treesitter.configs").setup({
         -- Parsers
@@ -36,7 +31,7 @@ return {
           enable = true,
           disable = function(_, buf)
             local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+            local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(buf))
             if ok and stats and stats.size > max_filesize then
               return true
             end
@@ -61,23 +56,6 @@ return {
             node_decremental = "<leader>sd",
           },
         },
-
-        -- Auto tag, provided by windwp/nvim-ts-autotag
-        autotag = {
-          enable = true,
-          filetypes = {
-            -- Explicitly list file types in order to disable PHP
-            'html',
-            'javascript',
-            'typescript',
-            'javascriptreact',
-            'typescriptreact',
-            'svelte',
-            'vue',
-            'xml',
-            'markdown',
-          },
-        }
       })
     end
   },

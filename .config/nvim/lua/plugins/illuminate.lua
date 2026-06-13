@@ -6,7 +6,7 @@ return {
     -- Providers used to get references in the buffer, ordered by priority
     providers = {
       'lsp',
-      'treesitter',
+      --'treesitter', -- https://github.com/RRethy/vim-illuminate/issues/247
       'regex',
     },
     delay = 400,

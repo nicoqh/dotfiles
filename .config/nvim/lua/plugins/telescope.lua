@@ -55,6 +55,7 @@ return {
     vim.keymap.set('n', '<leader>fp', builtin.builtin, { desc = "List built-in pickers" })
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "List files" })
     vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = "List files" })
+    vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "List references" })
     vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Find string (grep)" })
     vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "List buffers" })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "List help tags" })

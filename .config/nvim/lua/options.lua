@@ -72,9 +72,9 @@ vim.opt.shiftwidth = 4   -- Replace tab with spaces
 vim.opt.softtabstop = 4
 
 -- Folding
-vim.opt.foldenable = false                      -- Disable folding at startup.
+vim.opt.foldenable = false                           -- Disable folding at startup.
 vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()" -- Use treesitter
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter
 
 -- Show non-text characters
 vim.opt.listchars = {
@@ -101,9 +101,15 @@ vim.diagnostic.config({
 })
 
 -- Diagnostics symbols for the sign column
-vim.fn.sign_define("DiagnosticSignError", { texthl = "DiagnosticSignError", text = "✖", numhl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn", { texthl = "DiagnosticSignWarn", text = "❢", numhl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignHint", { texthl = "DiagnosticSignHint", text = "", numhl = "DiagnosticSignHint" })
-vim.fn.sign_define("DiagnosticSignInfo", { texthl = "DiagnosticSignInfo", text = "𝓲", numhl = "DiagnosticSignInfo" })
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "✖",
+      [vim.diagnostic.severity.WARN]  = "❢",
+      [vim.diagnostic.severity.HINT]  = "",
+      [vim.diagnostic.severity.INFO]  = "𝓲",
+    },
+  },
+})
 
 vim.opt.virtualedit = "block" -- Virtual editing (cursor can be anywhere) in visual block mode

@@ -1,4 +1,4 @@
-local secrets = require('../secrets')
+local secrets = require('secrets')
 
 return {
   {
@@ -205,7 +205,7 @@ return {
           -- Also consider lsp-timeout.nvim, but beware of misbehaving plugins.
           local toggle_lsp_client = function()
             local buf = vim.api.nvim_get_current_buf()
-            local clients = vim.lsp.get_active_clients({ bufnr = buf })
+            local clients = vim.lsp.get_clients({ bufnr = buf })
             if not vim.tbl_isempty(clients) then
               require("notify")("Stopping LS")
               vim.cmd("LspStop")
@@ -223,14 +223,14 @@ return {
           vim.keymap.set('n', 'K', vim.lsp.buf.hover, build_opts({ desc = "Hover tips" }))
           vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, build_opts({ desc = "Go to implementation" }))
           --vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-          vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-          vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-          vim.keymap.set('n', '<space>wl', function()
+          vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+          vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+          vim.keymap.set('n', '<leader>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
           end, opts)
-          vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-          vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, build_opts({ desc = "Rename symbol" }))
-          vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+          vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+          vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, build_opts({ desc = "Rename symbol" }))
+          vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
           vim.keymap.set('n', 'gr', vim.lsp.buf.references, build_opts({ desc = "References" }))
           vim.keymap.set('n', 'gp', function() vim.lsp.buf.format { async = true } end, build_opts({ desc = "Format" }))
 
@@ -241,6 +241,7 @@ return {
       ----------------------------------------
       -- Auto formatting using language servers
       ----------------------------------------
+      local formatting = vim.api.nvim_create_augroup('LspFormatting', { clear = true })
       vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         group = formatting,
         pattern = {
